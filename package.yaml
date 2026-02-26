@@ -1,0 +1,37 @@
+# package.yaml
+name: core-sdk
+version: 1.0.0
+description: Patterns and templates for creating reusable core libraries that can be shared across MCP servers, REST APIs, and client applications
+author: Patrick Michaelsen
+license: MIT
+homepage: https://github.com/prmichaelsen/acp-core-sdk
+repository: https://github.com/prmichaelsen/acp-core-sdk.git
+
+# Release configuration
+release:
+  branch: main
+
+# Package contents
+# Add files here as you create them
+# Use @acp.pattern-create, @acp.command-create, @acp.design-create
+# These commands automatically update this section
+contents:
+  patterns: []
+  
+  commands: []
+  
+  designs: []
+
+# Compatibility
+requires:
+  acp: >=2.8.0
+
+# Tags for discovery
+tags:
+  - core-library
+  - sdk
+  - typescript
+  - npm-package
+  - mcp
+  - rest-api
+  - reusable-code

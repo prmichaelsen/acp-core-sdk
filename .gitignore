@@ -1,0 +1,33 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.log
+
+# Node modules (if applicable)
+node_modules/
+
+# Python (if applicable)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Build artifacts
+dist/
+build/
+
+# ACP local files (local by default, tracking optional)
+# These directories exist with .gitkeep files, but content is gitignored
+agent/clarifications/*.md
+!agent/clarifications/*.template.md
+agent/feedback/*.md
+agent/reports/*.md
