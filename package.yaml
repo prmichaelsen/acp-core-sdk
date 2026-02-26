@@ -1,6 +1,6 @@
 # package.yaml
 name: core-sdk
-version: 1.0.0
+version: 1.1.0
 description: Patterns and templates for creating reusable core libraries that can be shared across MCP servers, REST APIs, and client applications
 author: Patrick Michaelsen
 license: MIT
@@ -16,11 +16,32 @@ release:
 # Use @acp.pattern-create, @acp.command-create, @acp.design-create
 # These commands automatically update this section
 contents:
-  patterns: []
+  patterns:
+    - name: core-sdk.service-base.md
+      description: Base service class pattern with lifecycle management, configuration, and common functionality
+      category: Service Layer
+      
+    - name: core-sdk.service-interface.md
+      description: Service interface pattern for dependency injection and loose coupling
+      category: Service Layer
+      
+    - name: core-sdk.service-container.md
+      description: Service container pattern for dependency injection and lifecycle management
+      category: Service Layer
+      
+    - name: core-sdk.service-error-handling.md
+      description: Consistent error handling pattern with custom error classes and error codes
+      category: Service Layer
+      
+    - name: core-sdk.service-logging.md
+      description: Structured logging pattern with consistent format across services
+      category: Service Layer
   
   commands: []
   
-  designs: []
+  designs:
+    - name: core-sdk.architecture.md
+      description: Patterns and templates for creating reusable core libraries that can be shared across MCP servers, REST APIs, and client applications
   
   # Template source files for core library projects
   templates:

@@ -42,7 +42,12 @@ Or using the installation script:
 
 ### Patterns
 
-(No patterns yet - use @acp.pattern-create to add patterns)
+#### Service Layer
+- **[core-sdk.service-base.md](agent/patterns/core-sdk.service-base.md)** - Base service class pattern with lifecycle management, configuration, and common functionality
+- **[core-sdk.service-interface.md](agent/patterns/core-sdk.service-interface.md)** - Service interface pattern for dependency injection and loose coupling
+- **[core-sdk.service-container.md](agent/patterns/core-sdk.service-container.md)** - Service container pattern for dependency injection and lifecycle management
+- **[core-sdk.service-error-handling.md](agent/patterns/core-sdk.service-error-handling.md)** - Consistent error handling pattern with custom error classes and error codes
+- **[core-sdk.service-logging.md](agent/patterns/core-sdk.service-logging.md)** - Structured logging pattern with consistent format across services
 
 ### Designs
 
