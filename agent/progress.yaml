@@ -11,24 +11,348 @@ project:
   description: |
     ACP Package: Patterns and templates for creating reusable core libraries that can be shared across MCP servers, REST APIs, and client applications
 
-milestones: []
+milestones:
+  - id: M1
+    name: Core Patterns & Templates
+    status: not_started
+    progress: 0
+    started: null
+    completed: null
+    estimated_weeks: 1-2
+    tasks_completed: 0
+    tasks_total: 6
+    notes: |
+      Foundation milestone - creates all pattern documents that guide implementation.
+      No code implementation yet, just comprehensive pattern documentation.
+  
+  - id: M2
+    name: Example Implementations
+    status: not_started
+    progress: 0
+    started: null
+    completed: null
+    estimated_weeks: 2-3
+    tasks_completed: 0
+    tasks_total: 7
+    notes: |
+      Validates patterns by building working examples for all deployment targets.
+      Demonstrates code reusability across MCP, REST, CLI, and client deployments.
+  
+  - id: M3
+    name: Documentation & Testing
+    status: not_started
+    progress: 0
+    started: null
+    completed: null
+    estimated_weeks: 1-2
+    tasks_completed: 0
+    tasks_total: 7
+    notes: |
+      Creates comprehensive documentation and testing infrastructure.
+      Makes package production-ready with guides, API docs, and test utilities.
+  
+  - id: M4
+    name: Package Publishing
+    status: not_started
+    progress: 0
+    started: null
+    completed: null
+    estimated_weeks: 1
+    tasks_completed: 0
+    tasks_total: 7
+    notes: |
+      Prepares and publishes package for public use.
+      Establishes processes for maintenance and community engagement.
 
-tasks: {}
+tasks:
+  milestone_1:
+    - id: task-1
+      name: Service Layer Patterns
+      status: not_started
+      file: agent/tasks/milestone-1-core-patterns-templates/task-1-service-layer-patterns.md
+      estimated_hours: 8-12
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Create 5 service patterns: base, interface, container, error handling, logging
+    
+    - id: task-2
+      name: Adapter Layer Patterns
+      status: not_started
+      file: agent/tasks/milestone-1-core-patterns-templates/task-2-adapter-layer-patterns.md
+      estimated_hours: 8-12
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Create 5 adapter patterns: base, MCP, REST, CLI, client
+    
+    - id: task-3
+      name: Configuration Patterns
+      status: not_started
+      file: agent/tasks/milestone-1-core-patterns-templates/task-3-configuration-patterns.md
+      estimated_hours: 6-8
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Create 5 config patterns: schema, environment, loading, secrets, multi-env
+    
+    - id: task-4
+      name: Testing Patterns
+      status: not_started
+      file: agent/tasks/milestone-1-core-patterns-templates/task-4-testing-patterns.md
+      estimated_hours: 6-8
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Create 5 testing patterns: unit, integration, mocks, fixtures, coverage
+    
+    - id: task-5
+      name: Type System Patterns
+      status: not_started
+      file: agent/tasks/milestone-1-core-patterns-templates/task-5-type-system-patterns.md
+      estimated_hours: 4-6
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Create 5 type patterns: shared, config, generic, error, result
+    
+    - id: task-6
+      name: Pattern Validation
+      status: not_started
+      file: agent/tasks/milestone-1-core-patterns-templates/task-6-pattern-validation.md
+      estimated_hours: 4-6
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Validate all patterns against design doc, update package metadata
+  
+  milestone_2:
+    - id: task-7
+      name: Shared Core Library
+      status: not_started
+      file: agent/tasks/milestone-2-example-implementations/task-7-shared-core-library.md
+      estimated_hours: 12-16
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Implement shared business logic used by all examples
+    
+    - id: task-8
+      name: MCP Server Example
+      status: not_started
+      file: agent/tasks/milestone-2-example-implementations/task-8-mcp-server-example.md
+      estimated_hours: 10-14
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Complete MCP server implementation with adapter
+    
+    - id: task-9
+      name: REST API Example
+      status: not_started
+      file: agent/tasks/milestone-2-example-implementations/task-9-rest-api-example.md
+      estimated_hours: 10-14
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Complete REST API implementation with Express/Fastify
+    
+    - id: task-10
+      name: CLI Tool Example
+      status: not_started
+      file: agent/tasks/milestone-2-example-implementations/task-10-cli-tool-example.md
+      estimated_hours: 8-12
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Complete CLI tool implementation with Commander
+    
+    - id: task-11
+      name: Client Library Example
+      status: not_started
+      file: agent/tasks/milestone-2-example-implementations/task-11-client-library-example.md
+      estimated_hours: 8-12
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Complete client library implementation
+    
+    - id: task-12
+      name: Example Integration Testing
+      status: not_started
+      file: agent/tasks/milestone-2-example-implementations/task-12-example-integration-testing.md
+      estimated_hours: 8-12
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Comprehensive integration tests for all examples
+    
+    - id: task-13
+      name: Example Documentation
+      status: not_started
+      file: agent/tasks/milestone-2-example-implementations/task-13-example-documentation.md
+      estimated_hours: 6-10
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Document all examples with setup and usage guides
+  
+  milestone_3:
+    - id: task-14
+      name: Usage Documentation
+      status: not_started
+      file: agent/tasks/milestone-3-documentation-testing/task-14-usage-documentation.md
+      estimated_hours: 12-16
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Getting started, quick start, pattern selection, migration, best practices, FAQ
+    
+    - id: task-15
+      name: API Documentation
+      status: not_started
+      file: agent/tasks/milestone-3-documentation-testing/task-15-api-documentation.md
+      estimated_hours: 8-12
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Complete API reference for all patterns and types
+    
+    - id: task-16
+      name: Integration Guides
+      status: not_started
+      file: agent/tasks/milestone-3-documentation-testing/task-16-integration-guides.md
+      estimated_hours: 10-14
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Comprehensive guides for each deployment target
+    
+    - id: task-17
+      name: Testing Infrastructure
+      status: not_started
+      file: agent/tasks/milestone-3-documentation-testing/task-17-testing-infrastructure.md
+      estimated_hours: 10-14
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Test utilities, fixtures, mocks, and helpers
+    
+    - id: task-18
+      name: Starter Templates
+      status: not_started
+      file: agent/tasks/milestone-3-documentation-testing/task-18-starter-templates.md
+      estimated_hours: 8-12
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Starter templates for each deployment target
+    
+    - id: task-19
+      name: Documentation Review
+      status: not_started
+      file: agent/tasks/milestone-3-documentation-testing/task-19-documentation-review.md
+      estimated_hours: 6-8
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Review all documentation for accuracy and completeness
+    
+    - id: task-20
+      name: Test Coverage Validation
+      status: not_started
+      file: agent/tasks/milestone-3-documentation-testing/task-20-test-coverage-validation.md
+      estimated_hours: 4-6
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Ensure adequate test coverage across all patterns and examples
+  
+  milestone_4:
+    - id: task-21
+      name: Package Validation
+      status: not_started
+      file: agent/tasks/milestone-4-package-publishing/task-21-package-validation.md
+      estimated_hours: 4-6
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Validate package structure, files, links, and examples
+    
+    - id: task-22
+      name: Version Management
+      status: not_started
+      file: agent/tasks/milestone-4-package-publishing/task-22-version-management.md
+      estimated_hours: 4-6
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Set up versioning, CHANGELOG, git tags, migration guides
+    
+    - id: task-23
+      name: Publishing Infrastructure
+      status: not_started
+      file: agent/tasks/milestone-4-package-publishing/task-23-publishing-infrastructure.md
+      estimated_hours: 6-8
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Configure npm publishing, GitHub releases, automation
+    
+    - id: task-24
+      name: Installation Testing
+      status: not_started
+      file: agent/tasks/milestone-4-package-publishing/task-24-installation-testing.md
+      estimated_hours: 4-6
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Test installation in various environments and scenarios
+    
+    - id: task-25
+      name: Community Infrastructure
+      status: not_started
+      file: agent/tasks/milestone-4-package-publishing/task-25-community-infrastructure.md
+      estimated_hours: 4-6
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Contributing guide, issue templates, code of conduct, security policy
+    
+    - id: task-26
+      name: Package Publishing
+      status: not_started
+      file: agent/tasks/milestone-4-package-publishing/task-26-package-publishing.md
+      estimated_hours: 2-4
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Publish package to npm and ACP registry
+    
+    - id: task-27
+      name: Post-Release Monitoring
+      status: not_started
+      file: agent/tasks/milestone-4-package-publishing/task-27-post-release-monitoring.md
+      estimated_hours: 2-4
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Set up monitoring, analytics, and feedback collection
 
 documentation:
   design_documents: 1
-  milestone_documents: 0
+  milestone_documents: 4
   pattern_documents: 0
   task_documents: 0
   command_documents: 0
   last_updated: 2026-02-26
 
 progress:
-  planning: 25
+  planning: 100
   implementation: 0
   testing: 0
-  documentation: 20
-  overall: 10
+  documentation: 25
+  overall: 30
 
 recent_work:
   - date: 2026-02-26
