@@ -46,7 +46,7 @@ Or using the installation script:
 
 ### Designs
 
-(No designs yet - use @acp.design-create to add designs)
+- **[core-sdk.architecture.md](agent/design/core-sdk.architecture.md)** - Patterns and templates for creating reusable core libraries that can be shared across MCP servers, REST APIs, and client applications
 <!-- ACP_AUTO_UPDATE_END:CONTENTS -->
 
 ## Why Use This Package

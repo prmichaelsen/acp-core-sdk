@@ -21,6 +21,99 @@ contents:
   commands: []
   
   designs: []
+  
+  # Template source files for core library projects
+  templates:
+    # Configuration templates
+    - name: config/package.json.template
+      description: npm package configuration with subpath exports
+      target: ./
+      required: true
+      variables:
+        - PACKAGE_NAME
+        - PACKAGE_DESCRIPTION
+        - AUTHOR_NAME
+    
+    - name: config/tsconfig.json
+      description: TypeScript configuration for ESM modules
+      target: ./
+      required: true
+    
+    - name: config/jest.config.js
+      description: Jest configuration for ESM + TypeScript
+      target: ./
+      required: true
+    
+    - name: config/esbuild.build.js
+      description: esbuild build configuration for multiple entry points
+      target: ./
+      required: true
+    
+    - name: config/esbuild.watch.js
+      description: esbuild watch mode for development
+      target: ./
+      required: true
+    
+    - name: config/gitignore.template
+      description: Git ignore rules for Node.js projects
+      target: ./.gitignore
+      required: true
+    
+    - name: config/npmignore.template
+      description: npm ignore rules to exclude dev files
+      target: ./.npmignore
+      required: true
+    
+    # Source code templates
+    - name: src/schemas/example.schema.ts
+      description: Example Zod schema with TypeScript type inference
+      target: src/schemas/
+      required: false
+    
+    - name: src/services/example.service.ts
+      description: Example service layer for Firestore operations
+      target: src/services/
+      required: false
+    
+    - name: src/dto/example.dto.ts
+      description: Example DTO type definitions
+      target: src/dto/
+      required: false
+    
+    - name: src/dto/transformers.ts
+      description: DTO transformer functions
+      target: src/dto/
+      required: false
+    
+    - name: src/dto/index.ts
+      description: Centralized DTO exports
+      target: src/dto/
+      required: false
+    
+    - name: src/constant/collections.ts
+      description: Firestore collection path helpers
+      target: src/constant/
+      required: false
+    
+    - name: src/errors/index.ts
+      description: Error exports and utilities
+      target: src/errors/
+      required: false
+    
+    - name: src/errors/task-errors.ts
+      description: Custom error classes with HTTP status codes
+      target: src/errors/
+      required: false
+    
+    - name: src/errors/task-errors.spec.ts
+      description: Error class tests
+      target: src/errors/
+      required: false
+    
+    - name: src/client.ts
+      description: Client wrapper for multi-tenant access
+      target: src/
+      required: false
 
 # Compatibility
 requires:
