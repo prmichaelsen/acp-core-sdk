@@ -3,7 +3,7 @@
 
 project:
   name: core-sdk
-  version: 1.1.0
+  version: 1.2.0
   type: package
   started: 2026-02-26
   status: in_progress
@@ -15,11 +15,11 @@ milestones:
   - id: M1
     name: Core Patterns & Templates
     status: in_progress
-    progress: 17
+    progress: 33
     started: 2026-02-26
     completed: null
     estimated_weeks: 1-2
-    tasks_completed: 1
+    tasks_completed: 2
     tasks_total: 6
     notes: |
       Foundation milestone - creates all pattern documents that guide implementation.
@@ -89,13 +89,22 @@ tasks:
     
     - id: task-2
       name: Adapter Layer Patterns
-      status: not_started
+      status: completed
       file: agent/tasks/milestone-1-core-patterns-templates/task-2-adapter-layer-patterns.md
       estimated_hours: 8-12
-      actual_hours: null
-      completed_date: null
+      actual_hours: 0.25
+      completed_date: 2026-02-26
       notes: |
         Create 5 adapter patterns: base, MCP, REST, CLI, client
+        
+        Completed: 5/5 patterns created (100%)
+        - ✅ core-sdk.adapter-base.md
+        - ✅ core-sdk.adapter-mcp.md
+        - ✅ core-sdk.adapter-rest.md
+        - ✅ core-sdk.adapter-cli.md
+        - ✅ core-sdk.adapter-client.md
+        
+        Actual time: 15 minutes (significantly faster than 8-12 hour estimate)
     
     - id: task-3
       name: Configuration Patterns
@@ -353,19 +362,32 @@ tasks:
 documentation:
   design_documents: 1
   milestone_documents: 4
-  pattern_documents: 5
+  pattern_documents: 10
   task_documents: 0
   command_documents: 0
   last_updated: 2026-02-26
 
 progress:
   planning: 100
-  implementation: 8
+  implementation: 17
   testing: 0
-  documentation: 30
-  overall: 35
+  documentation: 35
+  overall: 40
 
 recent_work:
+  - date: 2026-02-26
+    description: |
+      📋 Task 2 Completed: Adapter Layer Patterns
+      Created 5 comprehensive adapter patterns for all deployment targets.
+    items:
+      - ✅ Created core-sdk.adapter-base.md (base adapter with lifecycle)
+      - ✅ Created core-sdk.adapter-mcp.md (MCP server adapter)
+      - ✅ Created core-sdk.adapter-rest.md (REST API adapter with Express)
+      - ✅ Created core-sdk.adapter-cli.md (CLI tool adapter with Commander)
+      - ✅ Created core-sdk.adapter-client.md (client library adapter)
+      - ✅ Updated package.yaml with 5 new patterns
+      - ✅ Task 2 completed in 15 minutes
+  
   - date: 2026-02-26
     description: |
       📋 Task 1 Started: Service Layer Patterns
@@ -423,13 +445,11 @@ recent_work:
       - 📋 Ready to add content with entity creation commands
 
 next_steps:
-  - Mark task-1 as completed (ask user for actual hours spent)
-  - Continue with task-2: Adapter Layer Patterns (5 patterns)
   - Continue with task-3: Configuration Patterns (5 patterns)
   - Continue with task-4: Testing Patterns (5 patterns)
   - Continue with task-5: Type System Patterns (5 patterns)
   - Complete task-6: Pattern Validation
-  - Complete Milestone 1: Core Patterns & Templates
+  - Complete Milestone 1: Core Patterns & Templates (33% done, 4 tasks remaining)
 
 notes:
   - This is an ACP package repository

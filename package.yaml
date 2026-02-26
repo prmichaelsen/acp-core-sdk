@@ -1,6 +1,6 @@
 # package.yaml
 name: core-sdk
-version: 1.1.0
+version: 1.2.0
 description: Patterns and templates for creating reusable core libraries that can be shared across MCP servers, REST APIs, and client applications
 author: Patrick Michaelsen
 license: MIT
@@ -36,6 +36,26 @@ contents:
     - name: core-sdk.service-logging.md
       description: Structured logging pattern with consistent format across services
       category: Service Layer
+    
+    - name: core-sdk.adapter-base.md
+      description: Base adapter class pattern with lifecycle management for all deployment targets
+      category: Adapter Layer
+      
+    - name: core-sdk.adapter-mcp.md
+      description: MCP adapter pattern for exposing services through Model Context Protocol
+      category: Adapter Layer
+      
+    - name: core-sdk.adapter-rest.md
+      description: REST adapter pattern for exposing services through HTTP REST APIs
+      category: Adapter Layer
+      
+    - name: core-sdk.adapter-cli.md
+      description: CLI adapter pattern for exposing services through command-line interfaces
+      category: Adapter Layer
+      
+    - name: core-sdk.adapter-client.md
+      description: Client adapter pattern for exposing services as a consumable library
+      category: Adapter Layer
   
   commands: []
   

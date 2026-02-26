@@ -49,6 +49,13 @@ Or using the installation script:
 - **[core-sdk.service-error-handling.md](agent/patterns/core-sdk.service-error-handling.md)** - Consistent error handling pattern with custom error classes and error codes
 - **[core-sdk.service-logging.md](agent/patterns/core-sdk.service-logging.md)** - Structured logging pattern with consistent format across services
 
+#### Adapter Layer
+- **[core-sdk.adapter-base.md](agent/patterns/core-sdk.adapter-base.md)** - Base adapter class pattern with lifecycle management for all deployment targets
+- **[core-sdk.adapter-mcp.md](agent/patterns/core-sdk.adapter-mcp.md)** - MCP adapter pattern for exposing services through Model Context Protocol
+- **[core-sdk.adapter-rest.md](agent/patterns/core-sdk.adapter-rest.md)** - REST adapter pattern for exposing services through HTTP REST APIs
+- **[core-sdk.adapter-cli.md](agent/patterns/core-sdk.adapter-cli.md)** - CLI adapter pattern for exposing services through command-line interfaces
+- **[core-sdk.adapter-client.md](agent/patterns/core-sdk.adapter-client.md)** - Client adapter pattern for exposing services as a consumable library
+
 ### Designs
 
 - **[core-sdk.architecture.md](agent/design/core-sdk.architecture.md)** - Patterns and templates for creating reusable core libraries that can be shared across MCP servers, REST APIs, and client applications
