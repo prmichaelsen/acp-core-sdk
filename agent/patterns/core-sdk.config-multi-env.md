@@ -33,11 +33,11 @@ Implement a layered configuration hierarchy:
 
 ```
 config/
-├── base.json              # Shared defaults for all environments
-├── development.json       # Dev overrides (local dev settings)
-├── staging.json           # Staging overrides (production-like)
-├── production.json        # Production overrides (performance/scale)
-└── test.json              # Test overrides (fast, isolated)
+├── base.yaml              # Shared defaults for all environments
+├── development.yaml       # Dev overrides (local dev settings)
+├── staging.yaml           # Staging overrides (production-like)
+├── production.yaml        # Production overrides (performance/scale)
+└── test.yaml              # Test overrides (fast, isolated)
 ```
 
 ```typescript
@@ -60,89 +60,72 @@ export { Environment, getCurrentEnvironment };
 
 ### Base and Environment Config Files
 
-```typescript
-// config/base.json — shared defaults
-const BASE_CONFIG = {
-  server: {
-    port: 3000,
-    host: '0.0.0.0',
-    keepAliveTimeout: 65000,
-    requestTimeout: 30000,
-  },
-  logging: {
-    level: 'info',
-    format: 'json',
-    output: 'stdout',
-  },
-  cache: {
-    enabled: true,
-    ttl: 3600,
-    maxSize: 1000,
-  },
-  pagination: {
-    defaultLimit: 20,
-    maxLimit: 100,
-  },
-};
+```yaml
+# config/base.yaml — shared defaults for all environments
+server:
+  port: 3000
+  host: 0.0.0.0
+  keepAliveTimeout: 65000
+  requestTimeout: 30000
 
-// config/development.json — local dev overrides
-const DEVELOPMENT_CONFIG = {
-  server: {
-    port: 3000,
-  },
-  logging: {
-    level: 'debug',
-    format: 'text',     // Human-readable in dev
-  },
-  cache: {
-    enabled: false,     // Disable caching for dev
-    ttl: 60,
-  },
-};
+logging:
+  level: info
+  format: json
+  output: stdout
 
-// config/staging.json — staging overrides
-const STAGING_CONFIG = {
-  server: {
-    port: 8080,
-  },
-  logging: {
-    level: 'info',
-  },
-  cache: {
-    enabled: true,
-    ttl: 1800,          // Shorter TTL for staging
-  },
-};
+cache:
+  enabled: true
+  ttl: 3600
+  maxSize: 1000
 
-// config/production.json — production overrides
-const PRODUCTION_CONFIG = {
-  server: {
-    port: 8080,
-    keepAliveTimeout: 120000,
-  },
-  logging: {
-    level: 'warn',      // Less verbose in production
-  },
-  cache: {
-    enabled: true,
-    ttl: 3600,
-    maxSize: 10000,     // Larger cache in production
-  },
-};
+pagination:
+  defaultLimit: 20
+  maxLimit: 100
+```
 
-// config/test.json — test overrides
-const TEST_CONFIG = {
-  server: {
-    port: 0,            // Random port for tests
-  },
-  logging: {
-    level: 'error',     // Silent tests
-    output: 'stdout',
-  },
-  cache: {
-    enabled: false,
-  },
-};
+```yaml
+# config/development.yaml — local dev overrides
+logging:
+  level: debug
+  format: text  # Human-readable in dev
+
+cache:
+  enabled: false  # Disable caching for dev
+  ttl: 60
+```
+
+```yaml
+# config/staging.yaml — staging overrides
+server:
+  port: 8080
+
+cache:
+  ttl: 1800  # Shorter TTL for staging
+```
+
+```yaml
+# config/production.yaml — production overrides
+server:
+  port: 8080
+  keepAliveTimeout: 120000
+
+logging:
+  level: warn  # Less verbose in production
+
+cache:
+  maxSize: 10000  # Larger cache in production
+```
+
+```yaml
+# config/test.yaml — test overrides
+server:
+  port: 0  # Random port for tests
+
+logging:
+  level: error  # Silent tests
+
+cache:
+  enabled: false
 ```
 
 ### Multi-Environment Config Loader
@@ -151,6 +134,7 @@ const TEST_CONFIG = {
 import { z } from 'zod';
 import { promises as fs } from 'fs';
 import { join } from 'path';
+import { parse } from 'js-yaml';
 import { Environment, getCurrentEnvironment } from './environment';
 
 interface MultiEnvLoaderOptions<T> {
@@ -170,7 +154,7 @@ class MultiEnvConfigLoader<T extends object> {
   constructor(options: MultiEnvLoaderOptions<T>) {
     this.schema = options.schema;
     this.configDir = options.configDir;
-    this.baseFile = options.baseFile ?? 'base.json';
+    this.baseFile = options.baseFile ?? 'base.yaml';
   }
 
   /**
@@ -189,7 +173,7 @@ class MultiEnvConfigLoader<T extends object> {
     const base = await this.loadFile(this.baseFile);
 
     // 2. Load environment-specific overrides
-    const overrides = await this.loadFile(`${env}.json`);
+    const overrides = await this.loadFile(`${env}.yaml`);
 
     // 3. Deep merge: base → environment overrides → env vars
     const merged = this.deepMerge(base, overrides);
@@ -215,13 +199,13 @@ class MultiEnvConfigLoader<T extends object> {
   }
 
   /**
-   * Load JSON file, return empty object if not found
+   * Load YAML file, return empty object if not found
    */
   private async loadFile(filename: string): Promise<Partial<T>> {
     try {
       const filePath = join(this.configDir, filename);
       const content = await fs.readFile(filePath, 'utf-8');
-      return JSON.parse(content) as Partial<T>;
+      return parse(content) as Partial<T>;
     } catch {
       return {} as Partial<T>;
     }

@@ -35,8 +35,8 @@ Implement a layered configuration loading system with:
 /**
  * Configuration source priority (lowest to highest):
  * 1. Schema defaults - Built into the schema definition
- * 2. Default config file - config/default.json
- * 3. Environment config file - config/{NODE_ENV}.json
+ * 2. Default config file - config/default.yaml
+ * 3. Environment config file - config/{NODE_ENV}.yaml
  * 4. Environment variables - Process environment
  * 5. Command-line arguments - Runtime overrides
  */
@@ -55,6 +55,7 @@ interface ConfigMetadata {
 ```typescript
 import { z } from 'zod';
 import { promises as fs } from 'fs';
+import { parse } from 'js-yaml';
 import { deepmerge } from 'deepmerge-ts';
 
 interface ConfigLoaderOptions<T> {
@@ -78,7 +79,7 @@ class ConfigLoader<T extends object> {
     this.schema = options.schema;
     this.configDir = options.configDir ?? './config';
     this.envPrefix = options.envPrefix ?? 'APP';
-    this.configFilePattern = options.configFilePattern ?? '{env}.json';
+    this.configFilePattern = options.configFilePattern ?? '{env}.yaml';
   }
 
   /**
@@ -88,10 +89,10 @@ class ConfigLoader<T extends object> {
     const configs: Partial<T>[] = [];
 
     // 1. Load default config file
-    const defaultConfig = await this.loadFile('default.json');
+    const defaultConfig = await this.loadFile('default.yaml');
     if (defaultConfig) {
       configs.push(defaultConfig);
-      this.metadata.set('default', { source: 'default', loadedAt: new Date(), filePath: 'default.json' });
+      this.metadata.set('default', { source: 'default', loadedAt: new Date(), filePath: 'default.yaml' });
     }
 
     // 2. Load environment-specific config file
@@ -120,13 +121,13 @@ class ConfigLoader<T extends object> {
   }
 
   /**
-   * Load configuration from file
+   * Load configuration from YAML file
    */
   private async loadFile(filename: string): Promise<Partial<T> | null> {
     try {
       const filePath = `${this.configDir}/${filename}`;
       const content = await fs.readFile(filePath, 'utf-8');
-      return JSON.parse(content) as Partial<T>;
+      return parse(content) as Partial<T>;
     } catch {
       return null;
     }
@@ -206,6 +207,7 @@ export { ConfigLoader, ConfigLoaderOptions, ConfigSource, ConfigMetadata };
 ```typescript
 import { z } from 'zod';
 import { existsSync, readFileSync } from 'fs';
+import { parse } from 'js-yaml';
 
 /**
  * Synchronous configuration loader for startup
@@ -226,15 +228,15 @@ class SyncConfigLoader<T extends object> {
     const configs: Partial<T>[] = [];
 
     // Load default config
-    const defaultPath = `${this.configDir}/default.json`;
+    const defaultPath = `${this.configDir}/default.yaml`;
     if (existsSync(defaultPath)) {
-      configs.push(JSON.parse(readFileSync(defaultPath, 'utf-8')));
+      configs.push(parse(readFileSync(defaultPath, 'utf-8')) as Partial<T>);
     }
 
     // Load environment config
-    const envPath = `${this.configDir}/${env.NODE_ENV || 'development'}.json`;
+    const envPath = `${this.configDir}/${env.NODE_ENV || 'development'}.yaml`;
     if (existsSync(envPath)) {
-      configs.push(JSON.parse(readFileSync(envPath, 'utf-8')));
+      configs.push(parse(readFileSync(envPath, 'utf-8')) as Partial<T>);
     }
 
     // Load from environment
@@ -405,8 +407,8 @@ class WatchableConfigLoader<T extends object> extends ConfigLoader<T> {
    * Setup file watchers
    */
   private setupWatchers(): void {
-    const defaultPath = `${this.configDir}/default.json`;
-    const envPath = `${this.configDir}/${process.env.NODE_ENV || 'development'}.json`;
+    const defaultPath = `${this.configDir}/default.yaml`;
+    const envPath = `${this.configDir}/${process.env.NODE_ENV || 'development'}.yaml`;
 
     for (const filePath of [defaultPath, envPath]) {
       try {
