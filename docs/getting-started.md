@@ -93,7 +93,7 @@ npx ts-node src/config/test-run.ts
 # Config loaded: development 3000
 ```
 
-If you see an error like `ZodError: Required`, a required config field is missing. See the [Configuration](#configuration) section below.
+If you see an error like `ZodError: Required`, a required config field is missing. See the [Configuration Reference](#configuration-reference) section below.
 
 ## Configuration Reference
 

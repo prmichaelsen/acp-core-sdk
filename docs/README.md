@@ -33,6 +33,11 @@ Your domain logic (UserService)
 | Migrate existing code | [Migration Guide](guides/migration.md) |
 | Avoid common mistakes | [Pitfalls](guides/pitfalls.md) |
 | Get a quick answer | [FAQ](guides/faq.md) |
+| API reference: Types & Result | [Types](api/types.md) |
+| API reference: Services | [Services](api/services.md) |
+| API reference: Configuration | [Configuration](api/configuration.md) |
+| API reference: Adapters | [Adapters](api/adapters.md) |
+| API reference: Testing utilities | [Testing](api/testing.md) |
 
 ## What You Get
 
@@ -99,4 +104,4 @@ Working implementations to study and adapt:
 
 ## Version
 
-This documentation matches **core-sdk v1.16.0+**. See [CHANGELOG](../CHANGELOG.md) for version history.
+This documentation matches **core-sdk v1.19.0+**. See [CHANGELOG](../CHANGELOG.md) for version history.

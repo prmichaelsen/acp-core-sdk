@@ -5,6 +5,14 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.19.0] - 2026-02-27
+
+### Fixed
+- Documentation Review (Task 19, M3)
+  - `docs/getting-started.md`: broken anchor `#configuration` → `#configuration-reference` (line 96)
+  - `docs/README.md`: stale version reference updated to v1.19.0+
+  - `docs/README.md`: added 5 missing API reference links to Quick Navigation table (Types, Services, Configuration, Adapters, Testing)
+
 ## [1.17.0] - 2026-02-27
 
 ### Added
