@@ -1,6 +1,6 @@
 # package.yaml
 name: core-sdk
-version: 1.20.0
+version: 1.21.0
 description: Patterns and templates for creating reusable core libraries that can be shared across MCP servers, REST APIs, and client applications
 author: Patrick Michaelsen
 license: MIT

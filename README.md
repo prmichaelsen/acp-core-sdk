@@ -84,11 +84,32 @@ Or using the installation script:
 
 ## Why Use This Package
 
-(Add benefits and use cases here)
+- **Write once, deploy everywhere** — your business logic runs as a REST API, MCP server, CLI tool, or client library without rewriting anything
+- **Production-ready from day one** — typed errors, `Result<T,E>`, Zod config validation, and structured logging are baked in from the start
+- **Testable by design** — `MockUserRepository`, stable fixtures, and `ToolCapture` make unit and integration tests straightforward
+- **Copy, don't configure** — install source files directly into your project and adapt them; no framework lock-in
+- **Consistent patterns** — 25 patterns across service, adapter, config, testing, and type-system categories ensure every project follows the same conventions
 
 ## Usage
 
-(Add usage examples here)
+Install the package and copy source files into your project:
+
+```bash
+@acp.package-install https://github.com/prmichaelsen/acp-core-sdk.git
+```
+
+Then follow the [Getting Started guide](docs/getting-started.md) or jump straight to the [Quick Start](docs/quick-start.md) to build a REST server in 15 minutes.
+
+**Deploy to multiple targets:**
+
+```
+Your UserService
+    ├── REST API  → examples/rest/
+    ├── MCP server → examples/mcp/
+    └── CLI tool  → examples/cli/
+```
+
+See [Integration Guides](docs/README.md) for step-by-step wiring instructions.
 
 ## Development
 
@@ -133,7 +154,16 @@ All files in this package use the `core-sdk` namespace:
 
 ## Dependencies
 
-(List any required packages or project dependencies here)
+Consumer projects install these npm dependencies (exact versions in `config/package.json.template`):
+
+| Dependency | Purpose |
+|---|---|
+| `zod` | Runtime config schema validation |
+| `express` | REST adapter (optional) |
+| `@modelcontextprotocol/sdk` | MCP adapter (optional) |
+| `commander` | CLI adapter (optional) |
+
+Runtime peer dependencies depend on which adapters you use. The core types, errors, config, and service layers have no runtime dependencies beyond `zod`.
 
 ## Local Development Directories
 

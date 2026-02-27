@@ -87,9 +87,9 @@ milestones:
   
   - id: M4
     name: Package Publishing
-    status: not_started
-    progress: 0
-    started: null
+    status: in_progress
+    progress: 29
+    started: 2026-02-27
     completed: null
     estimated_weeks: 1
     tasks_completed: 0
@@ -470,23 +470,41 @@ tasks:
   milestone_4:
     - id: task-21
       name: Package Validation
-      status: not_started
+      status: completed
       file: agent/tasks/milestone-4-package-publishing/task-21-package-validation.md
       estimated_hours: 4-6
-      actual_hours: null
-      completed_date: null
+      actual_hours: 0.25
+      completed_date: 2026-02-27
       notes: |
-        Validate package structure, files, links, and examples
+        Full package validation via @acp.package-validate.
+
+        All checks passed (39 template files, 25 pattern files, 55 doc links, git remote, YAML):
+        - ✅ YAML structure valid (acp.yaml-validate.sh passed)
+        - ✅ All 39 template files exist in agent/files/
+        - ✅ All 25 pattern files exist in agent/patterns/
+        - ✅ Unlisted files only: framework templates (.gitkeep, pattern.template.md, bootstrap.template.md)
+        - ✅ Namespace consistency: all patterns use core-sdk. prefix
+        - ✅ Git remote accessible (a9b7ed4 HEAD)
+        - ✅ README sections: Installation, What's Included, License all present
+        - ✅ All 55 internal docs links valid (0 broken)
+        - ✅ Fixed 3 README placeholder sections with real content:
+            "Why Use This Package", "Usage", "Dependencies"
     
     - id: task-22
       name: Version Management
-      status: not_started
+      status: completed
       file: agent/tasks/milestone-4-package-publishing/task-22-version-management.md
       estimated_hours: 4-6
-      actual_hours: null
-      completed_date: null
+      actual_hours: 0.25
+      completed_date: 2026-02-27
       notes: |
-        Set up versioning, CHANGELOG, git tags, migration guides
+        Version consistency verified and git tag created.
+
+        Completed:
+        - ✅ package.yaml bumped to v1.21.0
+        - ✅ CHANGELOG.md entry added for v1.21.0 (Tasks 21+22)
+        - ✅ docs/README.md version reference updated to v1.21.0+
+        - ✅ Git tag v1.21.0 created and pushed
     
     - id: task-23
       name: Publishing Infrastructure

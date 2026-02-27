@@ -104,4 +104,4 @@ Working implementations to study and adapt:
 
 ## Version
 
-This documentation matches **core-sdk v1.19.0+**. See [CHANGELOG](../CHANGELOG.md) for version history.
+This documentation matches **core-sdk v1.21.0+**. See [CHANGELOG](../CHANGELOG.md) for version history.

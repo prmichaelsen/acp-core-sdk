@@ -5,6 +5,21 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.21.0] - 2026-02-27
+
+### Added
+- Version Management (Task 22, M4)
+  - Git tag `v1.21.0` created for this release
+  - `docs/README.md` version reference updated to v1.20.0+ → v1.21.0+
+  - Version consistency verified across `package.yaml`, `CHANGELOG.md`, `docs/README.md`
+
+### Fixed
+- Package Validation (Task 21, M4)
+  - `README.md`: replaced 3 placeholder sections with real content:
+    - "Why Use This Package" — 5 concrete benefits
+    - "Usage" — install command, multi-target deployment diagram, guide links
+    - "Dependencies" — table of runtime dependencies by adapter type
+
 ## [1.20.0] - 2026-02-27
 
 ### Added
