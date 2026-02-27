@@ -5,6 +5,19 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2026-02-27
+
+### Added
+- Testing Patterns (5 comprehensive patterns)
+  - `core-sdk.testing-unit.md` - Jest unit tests with `jest.config.js` and colocated `.spec.ts`
+  - `core-sdk.testing-integration.md` - Integration tests with `.integration.spec.ts` naming
+  - `core-sdk.testing-mocks.md` - Typed mocks with `jest.Mocked<T>` and `__mocks__/` factories
+  - `core-sdk.testing-fixtures.md` - Fixture factories in colocated `.fixtures.ts` files
+  - `core-sdk.testing-coverage.md` - Coverage thresholds, `lcov` reporting, and CI enforcement
+- Completed Task 4 of Milestone 1 (Core Patterns & Templates)
+- Updated package.yaml with 5 new testing patterns
+- Milestone 1 now 67% complete (4/6 tasks done)
+
 ## [1.3.1] - 2026-02-27
 
 ### Changed

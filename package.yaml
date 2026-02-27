@@ -1,6 +1,6 @@
 # package.yaml
 name: core-sdk
-version: 1.3.1
+version: 1.4.0
 description: Patterns and templates for creating reusable core libraries that can be shared across MCP servers, REST APIs, and client applications
 author: Patrick Michaelsen
 license: MIT
@@ -76,6 +76,26 @@ contents:
     - name: core-sdk.config-multi-env.md
       description: Multi-environment configuration pattern with inheritance for dev/staging/prod
       category: Configuration
+
+    - name: core-sdk.testing-unit.md
+      description: Unit testing pattern with Jest, jest.config.js, and colocated .spec.ts files
+      category: Testing
+
+    - name: core-sdk.testing-integration.md
+      description: Integration testing pattern with .integration.spec.ts naming convention
+      category: Testing
+
+    - name: core-sdk.testing-mocks.md
+      description: Mocks and stubs pattern with jest.Mocked<T> and colocated mock factories
+      category: Testing
+
+    - name: core-sdk.testing-fixtures.md
+      description: Test fixtures pattern with colocated .fixtures.ts factory functions
+      category: Testing
+
+    - name: core-sdk.testing-coverage.md
+      description: Coverage configuration pattern with jest.config.js thresholds and CI enforcement
+      category: Testing
 
   commands: []
   

@@ -15,20 +15,21 @@ milestones:
   - id: M1
     name: Core Patterns & Templates
     status: in_progress
-    progress: 50
+    progress: 67
     started: 2026-02-26
     completed: null
     estimated_weeks: 1-2
-    tasks_completed: 3
+    tasks_completed: 4
     tasks_total: 6
     notes: |
       Foundation milestone - creates all pattern documents that guide implementation.
       No code implementation yet, just comprehensive pattern documentation.
 
-      Tasks 1-3 complete: 15 patterns created (60% of planned patterns).
+      Tasks 1-4 complete: 20 patterns created (80% of planned patterns).
       - Task 1: 5 service layer patterns
       - Task 2: 5 adapter layer patterns
       - Task 3: 5 configuration patterns
+      - Task 4: 5 testing patterns (jest.config.js + colocated .spec.ts)
   
   - id: M2
     name: Example Implementations
@@ -130,13 +131,22 @@ tasks:
     
     - id: task-4
       name: Testing Patterns
-      status: not_started
+      status: completed
       file: agent/tasks/milestone-1-core-patterns-templates/task-4-testing-patterns.md
       estimated_hours: 6-8
-      actual_hours: null
-      completed_date: null
+      actual_hours: 0.25
+      completed_date: 2026-02-27
       notes: |
         Create 5 testing patterns: unit, integration, mocks, fixtures, coverage
+
+        Completed: 5/5 patterns created (100%)
+        - ✅ core-sdk.testing-unit.md (Jest + colocated .spec.ts, jest.config.js)
+        - ✅ core-sdk.testing-integration.md (.integration.spec.ts naming)
+        - ✅ core-sdk.testing-mocks.md (jest.Mocked<T>, __mocks__/ factories)
+        - ✅ core-sdk.testing-fixtures.md (.fixtures.ts colocated pattern)
+        - ✅ core-sdk.testing-coverage.md (thresholds, lcov, CI enforcement)
+
+        Convention: jest.config.js + colocated .spec.ts files
     
     - id: task-5
       name: Type System Patterns
@@ -374,7 +384,7 @@ tasks:
 documentation:
   design_documents: 1
   milestone_documents: 4
-  pattern_documents: 15
+  pattern_documents: 20
   task_documents: 0
   command_documents: 0
   last_updated: 2026-02-27
@@ -387,6 +397,18 @@ progress:
   overall: 40
 
 recent_work:
+  - date: 2026-02-27
+    description: |
+      📋 Task 4 Completed: Testing Patterns
+      Created 5 testing patterns using Jest with colocated .spec.ts files.
+    items:
+      - ✅ Created core-sdk.testing-unit.md (jest.config.js, colocated .spec.ts)
+      - ✅ Created core-sdk.testing-integration.md (.integration.spec.ts naming)
+      - ✅ Created core-sdk.testing-mocks.md (jest.Mocked<T>, mock factories)
+      - ✅ Created core-sdk.testing-fixtures.md (colocated .fixtures.ts)
+      - ✅ Created core-sdk.testing-coverage.md (thresholds, lcov, CI)
+      - ✅ Task 4 completed in ~15 minutes
+
   - date: 2026-02-27
     description: |
       📋 Task 3 Completed: Configuration Patterns
@@ -470,10 +492,9 @@ recent_work:
       - 📋 Ready to add content with entity creation commands
 
 next_steps:
-  - Continue with task-4: Testing Patterns (5 patterns)
   - Continue with task-5: Type System Patterns (5 patterns)
   - Complete task-6: Pattern Validation
-  - Complete Milestone 1: Core Patterns & Templates (50% done, 3 tasks remaining)
+  - Complete Milestone 1: Core Patterns & Templates (67% done, 2 tasks remaining)
 
 notes:
   - This is an ACP package repository
