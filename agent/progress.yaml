@@ -36,11 +36,11 @@ milestones:
   - id: M2
     name: Example Implementations
     status: in_progress
-    progress: 57
+    progress: 71
     started: 2026-02-27
     completed: null
     estimated_weeks: 2-3
-    tasks_completed: 4
+    tasks_completed: 5
     tasks_total: 7
     notes: |
       Validates patterns by building working examples for all deployment targets.
@@ -286,15 +286,18 @@ tasks:
 
     - id: task-11
       name: CLI Tool Example
-      status: not_started
+      status: completed
       file: agent/tasks/milestone-2-example-implementations/task-11-cli-tool-example.md
       estimated_hours: 6-8
-      actual_hours: null
-      completed_date: null
+      actual_hours: 0.25
+      completed_date: 2026-02-27
       notes: |
         Commander CLI example in agent/files/examples/cli/
         Installed to ./examples/cli/ in consumer projects (not src/).
-        Files: program.ts, user.commands.ts
+
+        Completed: All 2 files created
+        - ✅ examples/cli/user.commands.ts (registerUserCommands — user get, user create, user list)
+        - ✅ examples/cli/program.ts (Commander bootstrap, exit codes 0/1/2, stderr/stdout separation)
     
     - id: task-12
       name: Example Integration Testing
@@ -476,6 +479,14 @@ progress:
 recent_work:
   - date: 2026-02-27
     description: |
+      Task 11 Complete: CLI Tool Example
+      2 files in agent/files/examples/cli/ — Commander CLI exposing UserService as shell commands.
+    items:
+      - Created examples/cli/user.commands.ts (user get, user create, user list with --role/--limit/--json)
+      - Created examples/cli/program.ts (Commander bootstrap, exit codes 0/1/2, stdout/stderr separation)
+
+  - date: 2026-02-27
+    description: |
       Task 10 Complete: MCP Server Example
       2 files in agent/files/examples/mcp/ — MCP server exposing UserService as AI-discoverable tools.
     items:
@@ -641,8 +652,8 @@ recent_work:
       - 📋 Ready to add content with entity creation commands
 
 next_steps:
-  - Continue Milestone 2: Task 11 (CLI Tool Example — examples/cli/)
-  - Then Task 12 (Integration Testing) and Task 13 (Documentation)
+  - Continue Milestone 2: Task 12 (Example Integration Testing)
+  - Then Task 13 (Example Documentation + M2 complete)
 
 notes:
   - This is an ACP package repository

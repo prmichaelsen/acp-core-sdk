@@ -5,6 +5,18 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.11.0] - 2026-02-27
+
+### Added
+- CLI Tool Example (Task 11) in `agent/files/examples/cli/`
+  - `examples/cli/user.commands.ts` — `registerUserCommands(program, service)` registering three Commander commands:
+    - `user get <id>` — calls `service.findUser(id)`, prints `UserDTO` JSON or error + exit 1
+    - `user create <email> <name> [--role]` — calls `service.createUser(input)`, prints created `UserDTO`
+    - `user list [--role] [--cursor] [--limit] [--json]` — calls `service.listUsers(opts)`, prints table (default) or JSON
+  - `examples/cli/program.ts` — Commander program bootstrap: loads config, wires `UserService`, calls `registerUserCommands`, parses `process.argv`
+- CLI exit code convention: 0 on success, 1 on application error (`AppError`), 2 on usage/config error
+- Success output to stdout, errors to stderr — shell-composable; `--json` flag for machine-readable output
+
 ## [1.10.0] - 2026-02-27
 
 ### Added
