@@ -65,12 +65,12 @@ milestones:
   
   - id: M3
     name: Documentation & Testing
-    status: not_started
-    progress: 0
-    started: null
+    status: in_progress
+    progress: 14
+    started: 2026-02-27
     completed: null
     estimated_weeks: 1-2
-    tasks_completed: 0
+    tasks_completed: 1
     tasks_total: 7
     notes: |
       Creates comprehensive documentation and testing infrastructure.
@@ -344,13 +344,23 @@ tasks:
   milestone_3:
     - id: task-14
       name: Usage Documentation
-      status: not_started
+      status: completed
       file: agent/tasks/milestone-3-documentation-testing/task-14-usage-documentation.md
       estimated_hours: 12-16
-      actual_hours: null
-      completed_date: null
+      actual_hours: 0.25
+      completed_date: 2026-02-27
       notes: |
-        Getting started, quick start, pattern selection, migration, best practices, FAQ
+        User-facing documentation in docs/ directory.
+
+        Completed: 8 files created
+        - ✅ docs/README.md — documentation hub with nav table and architecture diagram
+        - ✅ docs/getting-started.md — prerequisites, install steps, config reference
+        - ✅ docs/quick-start.md — REST server from scratch in 15 minutes (Todo domain)
+        - ✅ docs/guides/pattern-selection.md — by-problem decision guide + decision tree
+        - ✅ docs/guides/best-practices.md — Result<T,E>, errors, services, DTOs, testing
+        - ✅ docs/guides/migration.md — before/after for 5 common migration scenarios
+        - ✅ docs/guides/pitfalls.md — 8 common mistakes with fixes
+        - ✅ docs/guides/faq.md — 20+ Q&A across general, Result, errors, config, testing
     
     - id: task-15
       name: API Documentation

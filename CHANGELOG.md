@@ -5,6 +5,19 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.14.0] - 2026-02-27
+
+### Added
+- Usage Documentation (Task 14, M3) in `docs/`
+  - `docs/README.md` — documentation hub: nav table, architecture ASCII diagram, "what you get" summary
+  - `docs/getting-started.md` — prerequisites, manual install steps, config env var reference, project structure
+  - `docs/quick-start.md` — 15-minute walkthrough: `TodoService` + routes + Express server with curl test commands
+  - `docs/guides/pattern-selection.md` — by-problem guide for all core patterns + decision tree
+  - `docs/guides/best-practices.md` — `Result<T,E>`, error classes, service boundaries, DTOs, testing
+  - `docs/guides/migration.md` — before/after for 5 scenarios: try/catch → Result, ad-hoc errors → AppError, config, God service → repository interface, fat routes → adapter pattern
+  - `docs/guides/pitfalls.md` — 8 common mistakes with fixes and quick-reference table
+  - `docs/guides/faq.md` — 20+ Q&A across general, Result, errors, config, adapters, testing, deployment
+
 ## [1.13.0] - 2026-02-27 — Milestone 2 Complete
 
 ### Added
