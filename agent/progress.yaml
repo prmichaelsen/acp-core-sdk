@@ -45,6 +45,23 @@ milestones:
     notes: |
       Validates patterns by building working examples for all deployment targets.
       Demonstrates code reusability across MCP, REST, CLI, and client deployments.
+
+      File structure convention:
+        agent/files/src/       — installable code (types, errors, config, services, client)
+        agent/files/examples/  — reference implementations installed to ./examples/
+
+      Installable (src/):
+        src/types/, src/errors/, src/config/, src/services/  — Task 7 (done)
+        src/client/                                          — Task 9
+
+      Examples (examples/):
+        examples/rest/    — Express REST server  — Task 8
+        examples/mcp/     — MCP server           — Task 10
+        examples/cli/     — Commander CLI        — Task 11
+
+      The REST client (src/client/) is the paired client for the REST server.
+      It wraps all REST endpoints as typed functions — consumers install and use
+      it directly without writing their own HTTP client code.
   
   - id: M3
     name: Documentation & Testing
@@ -221,44 +238,55 @@ tasks:
         - ✅ Updated package.yaml templates section
     
     - id: task-8
+      name: REST Server Example
+      status: not_started
+      file: agent/tasks/milestone-2-example-implementations/task-8-rest-server-example.md
+      estimated_hours: 8-10
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Express REST server example in agent/files/examples/rest/
+        Installed to ./examples/rest/ in consumer projects (not src/).
+        Files: server.ts, user.routes.ts, error-handler.ts
+        Imports shared core library from ../../src/
+
+    - id: task-9
+      name: REST Client Library
+      status: not_started
+      file: agent/tasks/milestone-2-example-implementations/task-9-rest-client-library.md
+      estimated_hours: 6-8
+      actual_hours: null
+      completed_date: null
+      notes: |
+        Typed REST client in agent/files/src/client/ (installable, not just example).
+        Wraps all REST endpoints defined in task-8 as typed functions.
+        Files: src/client/user.client.ts, src/client/index.ts
+        Also adds examples/rest/client-usage.ts showing the client in action.
+
+    - id: task-10
       name: MCP Server Example
       status: not_started
-      file: agent/tasks/milestone-2-example-implementations/task-8-mcp-server-example.md
-      estimated_hours: 10-14
+      file: agent/tasks/milestone-2-example-implementations/task-10-mcp-server-example.md
+      estimated_hours: 8-10
       actual_hours: null
       completed_date: null
       notes: |
-        Complete MCP server implementation with adapter
-    
-    - id: task-9
-      name: REST API Example
-      status: not_started
-      file: agent/tasks/milestone-2-example-implementations/task-9-rest-api-example.md
-      estimated_hours: 10-14
-      actual_hours: null
-      completed_date: null
-      notes: |
-        Complete REST API implementation with Express/Fastify
-    
-    - id: task-10
+        MCP server example in agent/files/examples/mcp/
+        Installed to ./examples/mcp/ in consumer projects (not src/).
+        Files: server.ts, user.tools.ts
+        No paired client needed — MCP protocol handles tool invocation.
+
+    - id: task-11
       name: CLI Tool Example
       status: not_started
-      file: agent/tasks/milestone-2-example-implementations/task-10-cli-tool-example.md
-      estimated_hours: 8-12
+      file: agent/tasks/milestone-2-example-implementations/task-11-cli-tool-example.md
+      estimated_hours: 6-8
       actual_hours: null
       completed_date: null
       notes: |
-        Complete CLI tool implementation with Commander
-    
-    - id: task-11
-      name: Client Library Example
-      status: not_started
-      file: agent/tasks/milestone-2-example-implementations/task-11-client-library-example.md
-      estimated_hours: 8-12
-      actual_hours: null
-      completed_date: null
-      notes: |
-        Complete client library implementation
+        Commander CLI example in agent/files/examples/cli/
+        Installed to ./examples/cli/ in consumer projects (not src/).
+        Files: program.ts, user.commands.ts
     
     - id: task-12
       name: Example Integration Testing

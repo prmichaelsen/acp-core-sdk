@@ -5,6 +5,17 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.1] - 2026-02-27
+
+### Changed
+- Revised M2 task plan: REST server examples go in `agent/files/examples/`, REST client goes in `agent/files/src/client/` (installable)
+- Renamed task-8 to REST Server Example, task-9 to REST Client Library, task-10 to MCP Server Example, task-11 to CLI Tool Example
+- Added `examples/` section to `package.yaml` templates (rest, mcp, cli, test utilities)
+- Updated M2 milestone notes to document `src/` vs `examples/` file convention
+
+### Added
+- Task documents for tasks 8-13 with detailed file structure and acceptance criteria
+
 ## [1.7.0] - 2026-02-27
 
 ### Added

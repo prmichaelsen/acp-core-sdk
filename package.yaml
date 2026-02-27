@@ -1,6 +1,6 @@
 # package.yaml
 name: core-sdk
-version: 1.7.0
+version: 1.7.1
 description: Patterns and templates for creating reusable core libraries that can be shared across MCP servers, REST APIs, and client applications
 author: Patrick Michaelsen
 license: MIT
@@ -233,6 +233,64 @@ contents:
     - name: src/services/index.ts
       description: Barrel re-export for all service classes and interfaces
       target: src/services/
+      required: false
+
+    # REST client (installable — wraps all REST endpoints as typed functions)
+    - name: src/client/user.client.ts
+      description: Typed REST client wrapping all user endpoints — createUserClient(baseUrl)
+      target: src/client/
+      required: false
+
+    - name: src/client/index.ts
+      description: Barrel re-export for the REST client
+      target: src/client/
+      required: false
+
+    # Examples (installed to ./examples/, not src/ — reference implementations)
+    - name: examples/rest/server.ts
+      description: Express REST server wiring UserService to routes
+      target: examples/rest/
+      required: false
+
+    - name: examples/rest/user.routes.ts
+      description: Express route handlers calling UserService with Result<T,E>
+      target: examples/rest/
+      required: false
+
+    - name: examples/rest/error-handler.ts
+      description: Centralized Express error handler using HTTP_STATUS map
+      target: examples/rest/
+      required: false
+
+    - name: examples/rest/client-usage.ts
+      description: Runnable script showing UserClient against the REST server
+      target: examples/rest/
+      required: false
+
+    - name: examples/mcp/server.ts
+      description: MCP server setup wiring UserService to MCP tools
+      target: examples/mcp/
+      required: false
+
+    - name: examples/mcp/user.tools.ts
+      description: MCP tool definitions wrapping UserService methods
+      target: examples/mcp/
+      required: false
+
+    - name: examples/cli/program.ts
+      description: Commander program setup wiring UserService to CLI commands
+      target: examples/cli/
+      required: false
+
+    - name: examples/cli/user.commands.ts
+      description: Commander command definitions wrapping UserService methods
+      target: examples/cli/
+      required: false
+
+    # Test utilities for examples
+    - name: examples/test/user.repository.mock.ts
+      description: In-memory UserRepository for integration tests (no real database)
+      target: examples/test/
       required: false
 
 # Compatibility
