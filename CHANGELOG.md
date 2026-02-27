@@ -5,6 +5,12 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.1] - 2026-02-27
+
+### Changed
+- `core-sdk.config-loading.md` - Switched config file format from JSON to YAML (`js-yaml` parse, `*.yaml` filenames)
+- `core-sdk.config-multi-env.md` - Switched config file examples from JSON objects to YAML files; updated loader to use `js-yaml`
+
 ## [1.3.0] - 2026-02-27
 
 ### Added
