@@ -66,11 +66,11 @@ milestones:
   - id: M3
     name: Documentation & Testing
     status: in_progress
-    progress: 43
+    progress: 57
     started: 2026-02-27
     completed: null
     estimated_weeks: 1-2
-    tasks_completed: 3
+    tasks_completed: 4
     tasks_total: 7
     notes: |
       Creates comprehensive documentation and testing infrastructure.
@@ -399,13 +399,20 @@ tasks:
     
     - id: task-17
       name: Testing Infrastructure
-      status: not_started
+      status: completed
       file: agent/tasks/milestone-3-documentation-testing/task-17-testing-infrastructure.md
       estimated_hours: 10-14
-      actual_hours: null
-      completed_date: null
+      actual_hours: 0.25
+      completed_date: 2026-02-27
       notes: |
-        Test utilities, fixtures, mocks, and helpers
+        Reusable test utilities, fixtures, and helpers installable into consumer projects.
+
+        Completed: 4 files created
+        - ✅ src/testing/fixtures.ts — adminUser, memberUser, viewerUser (stable IDs/emails), input fixtures
+        - ✅ src/testing/helpers.ts — makeTestService, makeTestApp, makeTestProgram, createCliCapture + CliCapture interface
+        - ✅ src/testing/index.ts — barrel re-export of all test utilities + MockUserRepository
+        - ✅ examples/test/helpers.ts — ToolCapture, makeMcpTestSetup, makeCliTestSetup, createCliCapture (MCP/CLI-focused)
+        - ✅ package.yaml — 4 new template entries for src/testing/ and examples/test/helpers.ts
     
     - id: task-18
       name: Starter Templates
@@ -699,8 +706,8 @@ recent_work:
       - 📋 Ready to add content with entity creation commands
 
 next_steps:
-  - Continue Milestone 3: Task 17 (Testing Infrastructure)
-  - Then Task 18 (Starter Templates)
+  - Continue Milestone 3: Task 18 (Starter Templates)
+  - Then Task 19 (Documentation Review)
 
 notes:
   - This is an ACP package repository

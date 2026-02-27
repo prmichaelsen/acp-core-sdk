@@ -5,6 +5,15 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.17.0] - 2026-02-27
+
+### Added
+- Testing Infrastructure (Task 17, M3) — reusable test utilities in `src/testing/` and `examples/test/`
+  - `src/testing/fixtures.ts` — stable User fixtures: `adminUser`, `memberUser`, `viewerUser` (static IDs/emails for reproducible assertions); input fixtures for valid, invalid, and conflicting inputs
+  - `src/testing/helpers.ts` — factory helpers: `makeTestService()`, `makeTestApp()`, `makeTestProgram()`, `createCliCapture()`; `CliCapture` interface wrapping `jest.spyOn` for stdout/stderr/exit
+  - `src/testing/index.ts` — barrel re-export including `MockUserRepository`
+  - `examples/test/helpers.ts` — `ToolCapture` class for MCP testing; `makeMcpTestSetup()`, `makeCliTestSetup()`, `createCliCapture()` factories; `mockLogger`
+
 ## [1.16.0] - 2026-02-27
 
 ### Added
