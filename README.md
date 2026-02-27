@@ -56,6 +56,27 @@ Or using the installation script:
 - **[core-sdk.adapter-cli.md](agent/patterns/core-sdk.adapter-cli.md)** - CLI adapter pattern for exposing services through command-line interfaces
 - **[core-sdk.adapter-client.md](agent/patterns/core-sdk.adapter-client.md)** - Client adapter pattern for exposing services as a consumable library
 
+#### Configuration
+- **[core-sdk.config-schema.md](agent/patterns/core-sdk.config-schema.md)** - Type-safe configuration schema pattern using Zod with validation and composition
+- **[core-sdk.config-environment.md](agent/patterns/core-sdk.config-environment.md)** - Environment variable mapping pattern with type coercion and naming conventions
+- **[core-sdk.config-loading.md](agent/patterns/core-sdk.config-loading.md)** - Layered configuration loading pattern with priority hierarchy and hot reload
+- **[core-sdk.config-secrets.md](agent/patterns/core-sdk.config-secrets.md)** - Secret management pattern with Secret wrapper, vault integration, and rotation
+- **[core-sdk.config-multi-env.md](agent/patterns/core-sdk.config-multi-env.md)** - Multi-environment configuration pattern with inheritance for dev/staging/prod
+
+#### Testing
+- **[core-sdk.testing-unit.md](agent/patterns/core-sdk.testing-unit.md)** - Unit testing pattern with Jest, jest.config.js, and colocated .spec.ts files
+- **[core-sdk.testing-integration.md](agent/patterns/core-sdk.testing-integration.md)** - Integration testing pattern with .integration.spec.ts naming convention
+- **[core-sdk.testing-mocks.md](agent/patterns/core-sdk.testing-mocks.md)** - Mocks and stubs pattern with jest.Mocked<T> and colocated mock factories
+- **[core-sdk.testing-fixtures.md](agent/patterns/core-sdk.testing-fixtures.md)** - Test fixtures pattern with colocated .fixtures.ts factory functions
+- **[core-sdk.testing-coverage.md](agent/patterns/core-sdk.testing-coverage.md)** - Coverage configuration pattern with jest.config.js thresholds and CI enforcement
+
+#### Type System
+- **[core-sdk.types-shared.md](agent/patterns/core-sdk.types-shared.md)** - Shared domain types pattern with branded primitives, DTOs, and pagination shapes
+- **[core-sdk.types-config.md](agent/patterns/core-sdk.types-config.md)** - Configuration types pattern with Zod-derived types and layer-scoped config slices
+- **[core-sdk.types-generic.md](agent/patterns/core-sdk.types-generic.md)** - Generic utility types pattern with DeepPartial, Nullable, Maybe, and type helpers
+- **[core-sdk.types-error.md](agent/patterns/core-sdk.types-error.md)** - Error type hierarchy pattern with discriminated unions and HTTP/MCP status mapping
+- **[core-sdk.types-result.md](agent/patterns/core-sdk.types-result.md)** - Result type pattern for typed functional error handling without exceptions
+
 ### Designs
 
 - **[core-sdk.architecture.md](agent/design/core-sdk.architecture.md)** - Patterns and templates for creating reusable core libraries that can be shared across MCP servers, REST APIs, and client applications

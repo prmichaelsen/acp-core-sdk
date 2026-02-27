@@ -338,6 +338,54 @@ constructor(config: Partial<UserClientConfig>) {
 
 ---
 
+## Anti-Patterns
+
+### ❌ Exposing Internal Service Classes Directly
+
+```typescript
+// Bad: Consumer has direct access to service internals
+export { UserService } from './services/user.service';
+
+// Good: Expose a clean client interface only
+export { UserClient } from './client';
+export type { UserDTO, CreateUserInput } from './types';
+```
+
+### ❌ No Error Boundary in Client Methods
+
+```typescript
+// Bad: Internal errors leak to the caller with no context
+async getUser(id: string): Promise<User> {
+  return this.service.getUser(id);  // May throw with internal error messages
+}
+
+// Good: Catch and wrap errors at the client boundary
+async getUser(id: string): Promise<User> {
+  try {
+    return await this.service.getUser(id as UserId);
+  } catch (err) {
+    if (isAppError(err)) throw err;  // Re-throw typed errors
+    throw new ExternalError('Client.getUser failed', 'core-sdk-client');
+  }
+}
+```
+
+### ❌ Requiring Consumers to Manage Lifecycle
+
+```typescript
+// Bad: Consumer must manually initialize and cleanup
+const service = new UserService(config);
+await service.initialize();
+// ... use service ...
+await service.cleanup();
+
+// Good: Client handles lifecycle internally
+const client = new UserClient(config);
+const user = await client.users.getUser(id);  // Auto-initializes on first call
+```
+
+---
+
 ## Related Patterns
 
 - **[Adapter Base Pattern](core-sdk.adapter-base.md)** - Base adapter class

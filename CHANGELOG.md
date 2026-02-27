@@ -5,6 +5,15 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.0] - 2026-02-27
+
+### Added
+- Pattern Validation completing Milestone 1 (Core Patterns & Templates)
+  - Added `## Anti-Patterns` sections to 4 adapter patterns (`adapter-mcp`, `adapter-rest`, `adapter-cli`, `adapter-client`)
+  - Updated `README.md` with all 25 patterns organized across 5 categories
+  - Verified all cross-references — 25/25 patterns have valid related-pattern links
+- Milestone 1 complete: 6/6 tasks, 25/25 patterns created and validated
+
 ## [1.5.0] - 2026-02-27
 
 ### Added

@@ -378,6 +378,50 @@ try {
 
 ---
 
+## Anti-Patterns
+
+### ❌ Business Logic in Tool Handlers
+
+```typescript
+// Bad: Core logic inside the MCP tool handler
+server.setRequestHandler(CallToolRequestSchema, async (request) => {
+  const user = await db.users.create(request.params.arguments);  // Direct DB access
+  return { content: [{ type: 'text', text: JSON.stringify(user) }] };
+});
+
+// Good: Handler delegates to service
+server.setRequestHandler(CallToolRequestSchema, async (request) => {
+  const user = await userService.createUser(request.params.arguments);
+  return { content: [{ type: 'text', text: JSON.stringify(user) }] };
+});
+```
+
+### ❌ No Tool Descriptions
+
+```typescript
+// Bad: AI models can't discover or use tools without descriptions
+{ name: 'create_user', inputSchema: { ... } }
+
+// Good: Rich descriptions guide model behavior
+{
+  name: 'create_user',
+  description: 'Create a new user account. Returns the created user object.',
+  inputSchema: { ... }
+}
+```
+
+### ❌ Exposing Internal Errors
+
+```typescript
+// Bad: Stack traces and internal details exposed to clients
+throw new McpError(ErrorCode.InternalError, err.stack);
+
+// Good: Safe, user-facing error messages
+throw new McpError(ErrorCode.InternalError, 'Failed to create user.');
+```
+
+---
+
 ## Related Patterns
 
 - **[Adapter Base Pattern](core-sdk.adapter-base.md)** - Base adapter class

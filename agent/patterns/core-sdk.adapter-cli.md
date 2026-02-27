@@ -388,6 +388,53 @@ handler: async (args, options) => {
 
 ---
 
+## Anti-Patterns
+
+### ❌ Business Logic in CLI Handlers
+
+```typescript
+// Bad: Validation and business logic in the CLI layer
+handler: async (args) => {
+  if (!args.email.includes('@')) throw new Error('Invalid email');
+  const user = await db.users.create({ email: args.email });  // Direct DB access
+  return user;
+}
+
+// Good: CLI handler delegates to service
+handler: async (args) => {
+  return await userService.createUser({ email: args.email });
+}
+```
+
+### ❌ Not Handling Process Exit Codes
+
+```typescript
+// Bad: Errors always exit 0 — scripts can't detect failure
+process.on('uncaughtException', (err) => console.error(err));
+
+// Good: Non-zero exit on error
+process.on('uncaughtException', (err) => {
+  console.error(err.message);
+  process.exit(1);
+});
+```
+
+### ❌ Missing --help Descriptions
+
+```typescript
+// Bad: No usage information
+program.command('create-user').action(handler);
+
+// Good: Descriptions for all commands and options
+program
+  .command('create-user')
+  .description('Create a new user account')
+  .requiredOption('--email <email>', 'User email address')
+  .action(handler);
+```
+
+---
+
 ## Related Patterns
 
 - **[Adapter Base Pattern](core-sdk.adapter-base.md)** - Base adapter class

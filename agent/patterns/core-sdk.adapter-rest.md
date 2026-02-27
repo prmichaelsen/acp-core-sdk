@@ -346,6 +346,62 @@ handler: async (req) => {
 
 ---
 
+## Anti-Patterns
+
+### ❌ Business Logic in Route Handlers
+
+```typescript
+// Bad: Core logic in the route handler
+router.post('/users', async (req, res) => {
+  if (!req.body.email.includes('@')) {
+    return res.status(400).json({ error: 'Invalid email' });
+  }
+  const user = await db.users.create(req.body);  // Direct DB access
+  res.json(user);
+});
+
+// Good: Handler delegates to service
+router.post('/users', async (req, res) => {
+  const user = await userService.createUser(req.body);
+  res.status(201).json(user);
+});
+```
+
+### ❌ Inconsistent HTTP Status Codes
+
+```typescript
+// Bad: Returning 200 for all responses including errors
+router.get('/users/:id', async (req, res) => {
+  const user = await userService.getUser(req.params.id);
+  if (!user) return res.json({ error: 'Not found' });  // Should be 404
+  res.json(user);
+});
+
+// Good: Correct status codes per HTTP semantics
+router.get('/users/:id', async (req, res) => {
+  const user = await userService.getUser(req.params.id);
+  if (!user) return res.status(404).json({ error: 'User not found' });
+  res.json(user);
+});
+```
+
+### ❌ No Centralized Error Handling
+
+```typescript
+// Bad: Each route handles errors differently
+router.get('/users/:id', async (req, res) => {
+  try { ... } catch (err) { res.status(500).json({ message: err.message }); }
+});
+router.post('/users', async (req, res) => {
+  try { ... } catch (err) { res.status(400).send(err.toString()); }  // Different format!
+});
+
+// Good: Centralized error handler middleware
+app.use(errorHandlerMiddleware);  // Handles all routes consistently
+```
+
+---
+
 ## Related Patterns
 
 - **[Adapter Base Pattern](core-sdk.adapter-base.md)** - Base adapter class
