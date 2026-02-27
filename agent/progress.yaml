@@ -36,11 +36,11 @@ milestones:
   - id: M2
     name: Example Implementations
     status: in_progress
-    progress: 71
+    progress: 86
     started: 2026-02-27
     completed: null
     estimated_weeks: 2-3
-    tasks_completed: 5
+    tasks_completed: 6
     tasks_total: 7
     notes: |
       Validates patterns by building working examples for all deployment targets.
@@ -301,13 +301,24 @@ tasks:
     
     - id: task-12
       name: Example Integration Testing
-      status: not_started
+      status: completed
       file: agent/tasks/milestone-2-example-implementations/task-12-example-integration-testing.md
       estimated_hours: 8-12
-      actual_hours: null
-      completed_date: null
+      actual_hours: 0.25
+      completed_date: 2026-02-27
       notes: |
-        Comprehensive integration tests for all examples
+        Integration tests for all examples using in-memory repository.
+
+        Completed: All 4 files created in agent/files/examples/test/
+        - ✅ examples/test/user.repository.mock.ts (MockUserRepository with reset()/seed()/all())
+        - ✅ examples/test/rest.integration.spec.ts (supertest against Express + UserClient round-trip)
+        - ✅ examples/test/mcp.integration.spec.ts (ToolCapture shim, direct handler calls)
+        - ✅ examples/test/cli.integration.spec.ts (process.exit mock, stdout/stderr capture)
+
+        Test strategies:
+        - REST: supertest against real Express app; UserClient tested with http.createServer + port 0
+        - MCP: ToolCapture class intercepts server.tool() registrations, calls handlers directly
+        - CLI: jest.spyOn(process.stdout/stderr/exit), program.parseAsync(['','', ...args])
     
     - id: task-13
       name: Example Documentation

@@ -1,6 +1,6 @@
 # package.yaml
 name: core-sdk
-version: 1.11.0
+version: 1.12.0
 description: Patterns and templates for creating reusable core libraries that can be shared across MCP servers, REST APIs, and client applications
 author: Patrick Michaelsen
 license: MIT
@@ -287,9 +287,24 @@ contents:
       target: examples/cli/
       required: false
 
-    # Test utilities for examples
+    # Test utilities and integration tests for examples
     - name: examples/test/user.repository.mock.ts
       description: In-memory UserRepository for integration tests (no real database)
+      target: examples/test/
+      required: false
+
+    - name: examples/test/rest.integration.spec.ts
+      description: REST adapter integration tests — supertest + UserClient round-trip
+      target: examples/test/
+      required: false
+
+    - name: examples/test/mcp.integration.spec.ts
+      description: MCP tool integration tests — ToolCapture shim, direct handler calls
+      target: examples/test/
+      required: false
+
+    - name: examples/test/cli.integration.spec.ts
+      description: CLI command integration tests — process.exit mock, stdout/stderr capture
       target: examples/test/
       required: false
 

@@ -5,6 +5,15 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.12.0] - 2026-02-27
+
+### Added
+- Example Integration Testing (Task 12) in `agent/files/examples/test/`
+  - `examples/test/user.repository.mock.ts` — `MockUserRepository` with `reset()`, `seed()`, `all()` — reusable across all test files; no real database
+  - `examples/test/rest.integration.spec.ts` — supertest against Express app; covers GET/:id (200/404/400), POST (201/400/409), GET with filters, error handler 500, POST→GET round-trip; `UserClient` round-trip via `http.createServer` + port 0
+  - `examples/test/mcp.integration.spec.ts` — `ToolCapture` shim intercepts `server.tool()` registrations; calls handlers directly; covers success + `McpError` error cases for all 3 tools
+  - `examples/test/cli.integration.spec.ts` — `jest.spyOn(process.stdout/stderr/exit)` + `program.parseAsync`; covers success output, error stderr, exit codes 0/1 for all 3 commands
+
 ## [1.11.0] - 2026-02-27
 
 ### Added
