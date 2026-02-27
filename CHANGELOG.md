@@ -5,6 +5,16 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.15.0] - 2026-02-27
+
+### Added
+- API Documentation (Task 15, M3) in `docs/api/`
+  - `docs/api/types.md` — `Result<T,E>`, combinators (`mapOk`, `andThen`, `tryCatch`), branded types, `User`/`UserDTO`/`toUserDTO`, `PaginatedResult`, `AppError` hierarchy, `HTTP_STATUS`, `isAppError`
+  - `docs/api/services.md` — `BaseService<TConfig>` (constructor, lifecycle hooks), `Logger` interface, `UserRepository` interface (all 4 methods), `UserService` (findUser, createUser, listUsers, parseUserId), `ServiceConfig`
+  - `docs/api/configuration.md` — all Zod schemas, layer-scoped config slices, `loadConfig()`, `createTestConfig(overrides?)`, complete environment variable reference table
+  - `docs/api/adapters.md` — `userRoutes`, `errorHandler`, `registerUserTools`, `registerUserCommands`, `createClient`/`createUserClient`/`UserClient` with HTTP response mapping
+  - `docs/api/testing.md` — `MockUserRepository` (`reset`/`seed`/`all`), `createTestConfig`, `ToolCapture` pattern for MCP testing, CLI test strategy with `jest.spyOn`, test isolation rules
+
 ## [1.14.0] - 2026-02-27
 
 ### Added

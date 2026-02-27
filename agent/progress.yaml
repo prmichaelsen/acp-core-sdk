@@ -66,11 +66,11 @@ milestones:
   - id: M3
     name: Documentation & Testing
     status: in_progress
-    progress: 14
+    progress: 28
     started: 2026-02-27
     completed: null
     estimated_weeks: 1-2
-    tasks_completed: 1
+    tasks_completed: 2
     tasks_total: 7
     notes: |
       Creates comprehensive documentation and testing infrastructure.
@@ -364,13 +364,20 @@ tasks:
     
     - id: task-15
       name: API Documentation
-      status: not_started
+      status: completed
       file: agent/tasks/milestone-3-documentation-testing/task-15-api-documentation.md
       estimated_hours: 8-12
-      actual_hours: null
-      completed_date: null
+      actual_hours: 0.25
+      completed_date: 2026-02-27
       notes: |
-        Complete API reference for all patterns and types
+        Complete API reference for all public APIs in 5 files.
+
+        Completed: All 5 files created in docs/api/
+        - ✅ docs/api/types.md — Result<T,E>, branded types, User/UserDTO, PaginatedResult, AppError hierarchy
+        - ✅ docs/api/services.md — BaseService, Logger, UserRepository, UserService, ServiceConfig
+        - ✅ docs/api/configuration.md — all schemas, loadConfig, createTestConfig, env var table
+        - ✅ docs/api/adapters.md — userRoutes, errorHandler, registerUserTools, registerUserCommands, createClient
+        - ✅ docs/api/testing.md — MockUserRepository, createTestConfig, ToolCapture, CLI test strategy
     
     - id: task-16
       name: Integration Guides
@@ -684,8 +691,8 @@ recent_work:
       - 📋 Ready to add content with entity creation commands
 
 next_steps:
-  - Continue Milestone 2: Task 12 (Example Integration Testing)
-  - Then Task 13 (Example Documentation + M2 complete)
+  - Continue Milestone 3: Task 16 (Integration Guides)
+  - Then Task 17 (Testing Infrastructure)
 
 notes:
   - This is an ACP package repository
