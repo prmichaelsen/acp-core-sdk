@@ -5,6 +5,19 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] - 2026-02-27
+
+### Added
+- Type System Patterns (5 comprehensive patterns)
+  - `core-sdk.types-shared.md` - Branded primitives (`UserId`, `Money`), DTOs, pagination types, and DTO transformers
+  - `core-sdk.types-config.md` - Zod-derived config types, layer-scoped slices (`ServiceConfig`, `AdapterConfig`), type guards
+  - `core-sdk.types-generic.md` - `DeepPartial`, `Nullable`, `Maybe`, `RequireFields`, `Immutable`, `tryCatch` utilities
+  - `core-sdk.types-error.md` - Discriminated union error hierarchy, `isAppError()` guard, HTTP/MCP status mapping
+  - `core-sdk.types-result.md` - `Result<T,E>`, `ok`/`err` constructors, `mapOk`, `andThen`, `tryCatchAsync`
+- Completed Task 5 of Milestone 1 (Core Patterns & Templates)
+- Updated package.yaml with 5 new type system patterns
+- Milestone 1 now 83% complete (5/6 tasks done, 25/25 patterns created)
+
 ## [1.4.0] - 2026-02-27
 
 ### Added

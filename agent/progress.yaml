@@ -15,21 +15,22 @@ milestones:
   - id: M1
     name: Core Patterns & Templates
     status: in_progress
-    progress: 67
+    progress: 83
     started: 2026-02-26
     completed: null
     estimated_weeks: 1-2
-    tasks_completed: 4
+    tasks_completed: 5
     tasks_total: 6
     notes: |
       Foundation milestone - creates all pattern documents that guide implementation.
       No code implementation yet, just comprehensive pattern documentation.
 
-      Tasks 1-4 complete: 20 patterns created (80% of planned patterns).
+      Tasks 1-5 complete: 25 patterns created (100% of planned patterns).
       - Task 1: 5 service layer patterns
       - Task 2: 5 adapter layer patterns
       - Task 3: 5 configuration patterns
       - Task 4: 5 testing patterns (jest.config.js + colocated .spec.ts)
+      - Task 5: 5 type system patterns (shared, config, generic, error, result)
   
   - id: M2
     name: Example Implementations
@@ -150,13 +151,22 @@ tasks:
     
     - id: task-5
       name: Type System Patterns
-      status: not_started
+      status: completed
       file: agent/tasks/milestone-1-core-patterns-templates/task-5-type-system-patterns.md
       estimated_hours: 4-6
-      actual_hours: null
-      completed_date: null
+      actual_hours: 0.25
+      completed_date: 2026-02-27
       notes: |
         Create 5 type patterns: shared, config, generic, error, result
+
+        Completed: 5/5 patterns created (100%)
+        - ✅ core-sdk.types-shared.md (branded primitives, DTOs, pagination)
+        - ✅ core-sdk.types-config.md (Zod-derived types, layer-scoped slices)
+        - ✅ core-sdk.types-generic.md (DeepPartial, Nullable, Maybe, utility types)
+        - ✅ core-sdk.types-error.md (discriminated union error hierarchy, HTTP/MCP mapping)
+        - ✅ core-sdk.types-result.md (Result<T,E>, ok/err constructors, combinators)
+
+        Actual time: 15 minutes (significantly faster than 4-6 hour estimate)
     
     - id: task-6
       name: Pattern Validation
@@ -384,19 +394,31 @@ tasks:
 documentation:
   design_documents: 1
   milestone_documents: 4
-  pattern_documents: 20
-  task_documents: 0
+  pattern_documents: 25
+  task_documents: 1
   command_documents: 0
   last_updated: 2026-02-27
 
 progress:
   planning: 100
-  implementation: 17
+  implementation: 20
   testing: 0
-  documentation: 35
-  overall: 40
+  documentation: 40
+  overall: 42
 
 recent_work:
+  - date: 2026-02-27
+    description: |
+      📋 Task 5 Completed: Type System Patterns
+      Created 5 type system patterns covering shared types, config types, generics, errors, and Result.
+    items:
+      - ✅ Created core-sdk.types-shared.md (branded primitives, DTOs, pagination)
+      - ✅ Created core-sdk.types-config.md (Zod-derived types, layer-scoped slices)
+      - ✅ Created core-sdk.types-generic.md (DeepPartial, Nullable, Maybe, utilities)
+      - ✅ Created core-sdk.types-error.md (discriminated union error hierarchy)
+      - ✅ Created core-sdk.types-result.md (Result<T,E>, ok/err, combinators)
+      - ✅ Task 5 completed in ~15 minutes
+
   - date: 2026-02-27
     description: |
       📋 Task 4 Completed: Testing Patterns
@@ -492,9 +514,9 @@ recent_work:
       - 📋 Ready to add content with entity creation commands
 
 next_steps:
-  - Continue with task-5: Type System Patterns (5 patterns)
   - Complete task-6: Pattern Validation
-  - Complete Milestone 1: Core Patterns & Templates (67% done, 2 tasks remaining)
+  - Complete Milestone 1: Core Patterns & Templates (83% done, 1 task remaining)
+  - Begin Milestone 2: Example Implementations
 
 notes:
   - This is an ACP package repository

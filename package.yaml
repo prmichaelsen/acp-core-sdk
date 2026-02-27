@@ -1,6 +1,6 @@
 # package.yaml
 name: core-sdk
-version: 1.4.0
+version: 1.5.0
 description: Patterns and templates for creating reusable core libraries that can be shared across MCP servers, REST APIs, and client applications
 author: Patrick Michaelsen
 license: MIT
@@ -96,6 +96,26 @@ contents:
     - name: core-sdk.testing-coverage.md
       description: Coverage configuration pattern with jest.config.js thresholds and CI enforcement
       category: Testing
+
+    - name: core-sdk.types-shared.md
+      description: Shared domain types pattern with branded primitives, DTOs, and pagination shapes
+      category: Type System
+
+    - name: core-sdk.types-config.md
+      description: Configuration types pattern with Zod-derived types and layer-scoped config slices
+      category: Type System
+
+    - name: core-sdk.types-generic.md
+      description: Generic utility types pattern with DeepPartial, Nullable, Maybe, and type helpers
+      category: Type System
+
+    - name: core-sdk.types-error.md
+      description: Error type hierarchy pattern with discriminated unions and HTTP/MCP status mapping
+      category: Type System
+
+    - name: core-sdk.types-result.md
+      description: Result type pattern for typed functional error handling without exceptions
+      category: Type System
 
   commands: []
   
