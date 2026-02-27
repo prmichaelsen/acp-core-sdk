@@ -23,6 +23,11 @@ Your domain logic (UserService)
 |---|---|
 | Get set up from scratch | [Getting Started](getting-started.md) |
 | Build something in 15 minutes | [Quick Start](quick-start.md) |
+| Wire a REST API | [REST Integration](guides/rest-integration.md) |
+| Wire an MCP server | [MCP Integration](guides/mcp-integration.md) |
+| Wire a CLI tool | [CLI Integration](guides/cli-integration.md) |
+| Use the REST client library | [Client Integration](guides/client-integration.md) |
+| Serve multiple targets at once | [Multi-Target](guides/multi-target.md) |
 | Choose the right pattern | [Pattern Selection](guides/pattern-selection.md) |
 | Use patterns correctly | [Best Practices](guides/best-practices.md) |
 | Migrate existing code | [Migration Guide](guides/migration.md) |
@@ -94,4 +99,4 @@ Working implementations to study and adapt:
 
 ## Version
 
-This documentation matches **core-sdk v1.13.0+**. See [CHANGELOG](../CHANGELOG.md) for version history.
+This documentation matches **core-sdk v1.16.0+**. See [CHANGELOG](../CHANGELOG.md) for version history.

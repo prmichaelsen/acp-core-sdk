@@ -5,6 +5,17 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.16.0] - 2026-02-27
+
+### Added
+- Integration Guides (Task 16, M3) in `docs/guides/`
+  - `docs/guides/rest-integration.md` — full Express wiring: `UserRepository` → `UserService` → `userRoutes` → `errorHandler`; curl verification; customization (new routes, auth middleware)
+  - `docs/guides/mcp-integration.md` — `McpServer` + `StdioServerTransport` wiring; Claude Desktop config; `ToolCapture` testing; stderr-only logging rule
+  - `docs/guides/cli-integration.md` — Commander wiring; exit codes 0/1/2; shell composability (piping, stderr/stdout separation); `jest.spyOn` testing
+  - `docs/guides/client-integration.md` — `createClient` and `createUserClient` usage; `Result<T,E>` response handling; pagination loop; `http.createServer` + port 0 testing
+  - `docs/guides/multi-target.md` — Option A (separate entry points), Option B (single binary with mode flag), Option C (CLI → REST client); graceful shutdown across all targets; anti-patterns
+- `docs/README.md` nav table updated with all 5 integration guides
+
 ## [1.15.0] - 2026-02-27
 
 ### Added

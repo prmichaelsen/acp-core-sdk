@@ -66,11 +66,11 @@ milestones:
   - id: M3
     name: Documentation & Testing
     status: in_progress
-    progress: 28
+    progress: 43
     started: 2026-02-27
     completed: null
     estimated_weeks: 1-2
-    tasks_completed: 2
+    tasks_completed: 3
     tasks_total: 7
     notes: |
       Creates comprehensive documentation and testing infrastructure.
@@ -381,13 +381,21 @@ tasks:
     
     - id: task-16
       name: Integration Guides
-      status: not_started
+      status: completed
       file: agent/tasks/milestone-3-documentation-testing/task-16-integration-guides.md
       estimated_hours: 10-14
-      actual_hours: null
-      completed_date: null
+      actual_hours: 0.25
+      completed_date: 2026-02-27
       notes: |
-        Comprehensive guides for each deployment target
+        Deployment-target-specific integration guides in docs/guides/.
+
+        Completed: All 5 files created
+        - ✅ docs/guides/rest-integration.md — full Express wiring, curl verification, testing
+        - ✅ docs/guides/mcp-integration.md — McpServer wiring, Claude Desktop config, ToolCapture testing
+        - ✅ docs/guides/cli-integration.md — Commander wiring, exit codes, shell composability, spyOn testing
+        - ✅ docs/guides/client-integration.md — createClient usage, Result<T,E> mapping, pagination, testing
+        - ✅ docs/guides/multi-target.md — separate entry points, single binary, graceful shutdown
+        - ✅ docs/README.md — nav table updated with 5 new integration guide links
     
     - id: task-17
       name: Testing Infrastructure
@@ -691,8 +699,8 @@ recent_work:
       - 📋 Ready to add content with entity creation commands
 
 next_steps:
-  - Continue Milestone 3: Task 16 (Integration Guides)
-  - Then Task 17 (Testing Infrastructure)
+  - Continue Milestone 3: Task 17 (Testing Infrastructure)
+  - Then Task 18 (Starter Templates)
 
 notes:
   - This is an ACP package repository
