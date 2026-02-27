@@ -15,17 +15,20 @@ milestones:
   - id: M1
     name: Core Patterns & Templates
     status: in_progress
-    progress: 33
+    progress: 50
     started: 2026-02-26
     completed: null
     estimated_weeks: 1-2
-    tasks_completed: 2
+    tasks_completed: 3
     tasks_total: 6
     notes: |
       Foundation milestone - creates all pattern documents that guide implementation.
       No code implementation yet, just comprehensive pattern documentation.
-      
-      Task 1 in progress: 5 service layer patterns created (20% of milestone).
+
+      Tasks 1-3 complete: 15 patterns created (60% of planned patterns).
+      - Task 1: 5 service layer patterns
+      - Task 2: 5 adapter layer patterns
+      - Task 3: 5 configuration patterns
   
   - id: M2
     name: Example Implementations
@@ -108,13 +111,22 @@ tasks:
     
     - id: task-3
       name: Configuration Patterns
-      status: not_started
+      status: completed
       file: agent/tasks/milestone-1-core-patterns-templates/task-3-configuration-patterns.md
       estimated_hours: 6-8
-      actual_hours: null
-      completed_date: null
+      actual_hours: 0.25
+      completed_date: 2026-02-27
       notes: |
         Create 5 config patterns: schema, environment, loading, secrets, multi-env
+
+        Completed: 5/5 patterns created (100%)
+        - ✅ core-sdk.config-schema.md
+        - ✅ core-sdk.config-environment.md
+        - ✅ core-sdk.config-loading.md
+        - ✅ core-sdk.config-secrets.md
+        - ✅ core-sdk.config-multi-env.md
+
+        Actual time: 15 minutes (significantly faster than 6-8 hour estimate)
     
     - id: task-4
       name: Testing Patterns
@@ -362,10 +374,10 @@ tasks:
 documentation:
   design_documents: 1
   milestone_documents: 4
-  pattern_documents: 10
+  pattern_documents: 15
   task_documents: 0
   command_documents: 0
-  last_updated: 2026-02-26
+  last_updated: 2026-02-27
 
 progress:
   planning: 100
@@ -375,6 +387,19 @@ progress:
   overall: 40
 
 recent_work:
+  - date: 2026-02-27
+    description: |
+      📋 Task 3 Completed: Configuration Patterns
+      Created 5 comprehensive configuration patterns for type-safe, multi-environment config.
+    items:
+      - ✅ Created core-sdk.config-schema.md (Zod-based schema validation)
+      - ✅ Created core-sdk.config-environment.md (env var mapping and coercion)
+      - ✅ Created core-sdk.config-loading.md (layered loading with priority hierarchy)
+      - ✅ Created core-sdk.config-secrets.md (Secret wrapper, vault, rotation)
+      - ✅ Created core-sdk.config-multi-env.md (dev/staging/prod inheritance)
+      - ✅ Updated progress.yaml with task completion
+      - ✅ Task 3 completed in ~15 minutes
+
   - date: 2026-02-26
     description: |
       📋 Task 2 Completed: Adapter Layer Patterns
@@ -445,11 +470,10 @@ recent_work:
       - 📋 Ready to add content with entity creation commands
 
 next_steps:
-  - Continue with task-3: Configuration Patterns (5 patterns)
   - Continue with task-4: Testing Patterns (5 patterns)
   - Continue with task-5: Type System Patterns (5 patterns)
   - Complete task-6: Pattern Validation
-  - Complete Milestone 1: Core Patterns & Templates (33% done, 4 tasks remaining)
+  - Complete Milestone 1: Core Patterns & Templates (50% done, 3 tasks remaining)
 
 notes:
   - This is an ACP package repository
