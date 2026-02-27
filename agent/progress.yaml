@@ -35,12 +35,12 @@ milestones:
   
   - id: M2
     name: Example Implementations
-    status: not_started
-    progress: 0
-    started: null
+    status: in_progress
+    progress: 14
+    started: 2026-02-27
     completed: null
     estimated_weeks: 2-3
-    tasks_completed: 0
+    tasks_completed: 1
     tasks_total: 7
     notes: |
       Validates patterns by building working examples for all deployment targets.
@@ -191,13 +191,34 @@ tasks:
   milestone_2:
     - id: task-7
       name: Shared Core Library
-      status: not_started
+      status: completed
       file: agent/tasks/milestone-2-example-implementations/task-7-shared-core-library.md
       estimated_hours: 12-16
-      actual_hours: null
-      completed_date: null
+      actual_hours: 0.25
+      completed_date: 2026-02-27
       notes: |
         Implement shared business logic used by all examples
+
+        Approach: Used agent/files/ directory to bundle working TypeScript source files
+        alongside pattern docs. Users install these files directly into their projects.
+
+        Completed: All core library files created (12 files)
+        - ✅ src/types/result.types.ts (Result<T,E>, ok, err, combinators)
+        - ✅ src/types/utils.types.ts (DeepPartial, Nullable, Maybe, Immutable)
+        - ✅ src/types/shared.types.ts (UserId, User entity, UserDTO, PaginatedResult)
+        - ✅ src/types/index.ts (barrel re-export)
+        - ✅ src/errors/base.error.ts (AppError abstract base)
+        - ✅ src/errors/app-errors.ts (8 typed error subclasses)
+        - ✅ src/errors/index.ts (AppErrorUnion, HTTP_STATUS, isAppError)
+        - ✅ src/config/schema.ts (Zod schemas, derived types, createTestConfig)
+        - ✅ src/config/loader.ts (loadConfig with env var merging)
+        - ✅ src/config/index.ts (barrel re-export)
+        - ✅ src/services/base.service.ts (BaseService with lifecycle)
+        - ✅ src/services/user.service.ts (UserService with Result<T,E>)
+        - ✅ src/services/index.ts (barrel re-export)
+        - ✅ Removed obsolete Firebase-specific files
+        - ✅ Updated agent/files/README.md with new structure
+        - ✅ Updated package.yaml templates section
     
     - id: task-8
       name: MCP Server Example
@@ -419,7 +440,30 @@ progress:
 recent_work:
   - date: 2026-02-27
     description: |
-      🎉 Milestone 1 Complete: Core Patterns & Templates
+      Task 7 Complete: Shared Core Library (M2 started)
+      Created 13 TypeScript files in agent/files/src/ implementing the core-sdk patterns.
+      Replaces Firebase-specific placeholders with generic, installable examples.
+    items:
+      - Created src/types/result.types.ts (Result<T,E>, ok, err, isOk, isErr, chaining helpers)
+      - Created src/types/utils.types.ts (DeepPartial, Nullable, Maybe, Immutable)
+      - Created src/types/shared.types.ts (UserId, User, UserDTO, PaginatedResult)
+      - Created src/types/index.ts (barrel re-export)
+      - Created src/errors/base.error.ts (AppError abstract base)
+      - Created src/errors/app-errors.ts (8 typed error subclasses)
+      - Created src/errors/index.ts (AppErrorUnion, HTTP_STATUS, isAppError)
+      - Created src/config/schema.ts (Zod schemas, derived types, createTestConfig)
+      - Created src/config/loader.ts (loadConfig with env var merging)
+      - Created src/config/index.ts (barrel re-export)
+      - Created src/services/base.service.ts (BaseService with lifecycle)
+      - Created src/services/user.service.ts (UserService with Result<T,E>)
+      - Created src/services/index.ts (barrel re-export)
+      - Removed obsolete Firebase-specific src/ files
+      - Updated agent/files/README.md with new structure and customization guide
+      - Updated package.yaml templates section (13 new entries, removed old Firebase entries)
+
+  - date: 2026-02-27
+    description: |
+      Milestone 1 Complete: Core Patterns & Templates
       All 25 patterns validated and README updated. M1 is 100% done.
     items:
       - ✅ Task 6: Pattern validation completed
@@ -535,9 +579,9 @@ recent_work:
       - 📋 Ready to add content with entity creation commands
 
 next_steps:
-  - Begin Milestone 2: Example Implementations (task-7: Shared Core Library)
-  - Implement the shared core library using patterns from M1
-  - Build MCP server, REST API, CLI, and client examples
+  - Continue Milestone 2: Task 8 (MCP Server Example)
+  - Build MCP adapter wrapping UserService using core-sdk.adapter-mcp.md pattern
+  - Continue with REST, CLI, and client adapter examples (Tasks 9-11)
 
 notes:
   - This is an ACP package repository

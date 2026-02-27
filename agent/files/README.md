@@ -1,140 +1,149 @@
-# Core SDK Templates
+# Core SDK — Template Files
 
-This directory contains template files for creating reusable core libraries that can be shared across MCP servers, REST APIs, and client applications.
+This directory contains pre-filled TypeScript source files that implement the core-sdk patterns. Install these into your project to start with a working foundation instead of building from scratch.
 
-## Template Structure
+## Directory Structure
 
 ```
-templates/
-├── config/                     # Configuration templates
-│   ├── package.json.template   # npm package with subpath exports
-│   ├── tsconfig.json          # TypeScript configuration
-│   ├── jest.config.js         # Jest for ESM + TypeScript
-│   ├── esbuild.build.js       # esbuild for multiple entry points
-│   ├── esbuild.watch.js       # esbuild watch mode
-│   ├── gitignore.template     # Git ignore rules
-│   └── npmignore.template     # npm ignore rules
+agent/files/
+├── config/                          # Project configuration files
+│   ├── package.json.template        # npm package with subpath exports
+│   ├── tsconfig.json                # TypeScript: ESM, strict, declarations
+│   ├── jest.config.js               # Jest: ESM + TypeScript + colocated tests
+│   ├── esbuild.build.js             # esbuild: multiple entry points
+│   ├── esbuild.watch.js             # esbuild: watch mode for development
+│   ├── gitignore.template           # Git ignore rules
+│   └── npmignore.template           # npm ignore rules
 │
-├── src/                        # Source code templates
-│   ├── schemas/
-│   │   └── example.schema.ts  # Zod schema pattern
-│   ├── services/
-│   │   └── example.service.ts # Service layer pattern
-│   ├── dto/
-│   │   ├── example.dto.ts     # DTO types
-│   │   ├── transformers.ts    # DTO transformers
-│   │   └── index.ts           # DTO exports
-│   ├── constant/
-│   │   └── collections.ts     # Collection path helpers
-│   ├── errors/
-│   │   ├── index.ts           # Error exports
-│   │   ├── task-errors.ts     # Error classes
-│   │   └── task-errors.spec.ts # Error tests
-│   └── client.ts              # Client wrapper pattern
-│
-└── test/                       # Test templates
-    └── (test examples)
+└── src/                             # Source code templates
+    ├── types/
+    │   ├── result.types.ts          # Result<T,E>, ok, err, combinators
+    │   ├── utils.types.ts           # DeepPartial, Nullable, Maybe, Immutable
+    │   ├── shared.types.ts          # Branded types, User entity, DTOs, pagination
+    │   └── index.ts                 # Barrel re-export
+    │
+    ├── errors/
+    │   ├── base.error.ts            # AppError abstract base class
+    │   ├── app-errors.ts            # Typed error subclasses (8 kinds)
+    │   └── index.ts                 # Barrel re-export + AppErrorUnion + HTTP_STATUS
+    │
+    ├── config/
+    │   ├── schema.ts                # Zod schemas + inferred types + test helper
+    │   ├── loader.ts                # loadConfig (env var merging + validation)
+    │   └── index.ts                 # Barrel re-export
+    │
+    └── services/
+        ├── base.service.ts          # BaseService abstract class with lifecycle
+        ├── user.service.ts          # UserService: Result<T,E> + validation example
+        └── index.ts                 # Barrel re-export
 ```
 
-## Usage
+## What Each File Provides
 
-### With ACP Package Install
+### Configuration Files (`config/`)
 
-Once the templates feature is available in ACP:
+| File | Purpose |
+|------|---------|
+| `package.json.template` | npm package with 6 subpath exports for tree-shaking |
+| `tsconfig.json` | TypeScript strict mode, ESM, declaration generation |
+| `jest.config.js` | Jest with `ts-jest`, `extensionsToTreatAsEsm`, colocated `.spec.ts` files |
+| `esbuild.build.js` | Bundle multiple entry points to `dist/` |
+| `esbuild.watch.js` | Watch mode for development |
+| `gitignore.template` | Node.js `.gitignore` rules |
+| `npmignore.template` | Exclude `src/`, `agent/`, tests from published package |
+
+### Type System (`src/types/`)
+
+- **`result.types.ts`** — `Result<T, E>` discriminated union with `ok()`, `err()`, `isOk()`, `isErr()`, and combinators (`mapOk`, `mapErr`, `andThen`, `getOrElse`, `tryCatch`, `tryCatchAsync`). Use for operations where failure is expected.
+
+- **`utils.types.ts`** — Generic type utilities: `DeepPartial<T>` for test fixtures, `Nullable<T>` / `Maybe<T>` for optional fields, `Immutable<T>` for config objects, `RequireFields<T, K>` for endpoint-specific inputs.
+
+- **`shared.types.ts`** — Branded primitive types (`UserId`, `EmailAddress`, `Timestamp`) that prevent mixing semantically different strings at compile time. Also includes the `User` entity, `UserDTO` (API response shape), `PaginatedResult<T>`, and their factory/transformer functions.
+
+### Error Hierarchy (`src/errors/`)
+
+- **`base.error.ts`** — `AppError` abstract base class with `kind` discriminant, `context` bag, and `toJSON()`. All application errors extend this.
+
+- **`app-errors.ts`** — Eight typed error classes: `ValidationError`, `NotFoundError`, `UnauthorizedError`, `ForbiddenError`, `ConflictError`, `RateLimitError`, `ExternalError`, `InternalError`. Each has typed constructor parameters and a `kind` literal.
+
+- **`index.ts`** — Barrel re-export plus `AppErrorUnion` (the discriminated union type), `HTTP_STATUS` (the kind → HTTP status code map), and `isAppError()` type guard.
+
+### Configuration (`src/config/`)
+
+- **`schema.ts`** — Zod schemas for `Database`, `Server`, `Logging`, and `App` config. Types are always derived via `z.infer<>` — never written manually. Includes layer-scoped slices (`ServiceConfig`, `AdapterConfig`) and a `createTestConfig()` helper for tests.
+
+- **`loader.ts`** — `loadConfig()` merges environment variables (highest priority) on top of a raw config object, then validates through the Zod schema. Call once at startup.
+
+### Service Layer (`src/services/`)
+
+- **`base.service.ts`** — `BaseService<TConfig>` abstract class. Provides constructor injection of config + logger, `initialize()` and `shutdown()` lifecycle hooks, and `this.name` from the class name.
+
+- **`user.service.ts`** — `UserService` example implementing `findUser()`, `createUser()`, `listUsers()`, and `parseUserId()`. Demonstrates `Result<T, E>` for expected failures, typed error subclasses, and the `UserRepository` interface (inject a real DB adapter or a mock in tests).
+
+## Installation
+
+### With ACP Package Install (coming soon)
 
 ```bash
-# Install all templates
 @acp.package-install --repo https://github.com/prmichaelsen/acp-core-sdk.git
-
-# Install only configuration templates
-@acp.package-install --templates config/* --repo <url>
-
-# Install specific templates
-@acp.package-install --templates config/tsconfig.json src/schemas/example.schema.ts --repo <url>
 ```
 
-### Manual Usage
+### Manual Installation
 
-Copy template files to your project:
+Copy configuration files:
 
 ```bash
-# Copy configuration files
-cp templates/config/tsconfig.json ./
-cp templates/config/jest.config.js ./
-cp templates/config/esbuild.build.js ./
-cp templates/config/esbuild.watch.js ./
-
-# Copy source templates
-cp -r templates/src/* ./src/
-
-# Rename template files
-mv templates/config/gitignore.template ./.gitignore
-mv templates/config/npmignore.template ./.npmignore
+cp agent/files/config/tsconfig.json ./
+cp agent/files/config/jest.config.js ./
+cp agent/files/config/esbuild.build.js ./
+cp agent/files/config/esbuild.watch.js ./
+cp agent/files/config/gitignore.template ./.gitignore
+cp agent/files/config/npmignore.template ./.npmignore
 ```
 
-### Customizing package.json.template
+Customize `package.json.template`:
+- Replace `{{PACKAGE_NAME}}`, `{{PACKAGE_DESCRIPTION}}`, `{{AUTHOR_NAME}}`
 
-The `package.json.template` file contains variables that need to be replaced:
+Copy source files:
 
-- `{{PACKAGE_NAME}}` - Your package name (e.g., `@myorg/my-core`)
-- `{{PACKAGE_DESCRIPTION}}` - Package description
-- `{{AUTHOR_NAME}}` - Your name
+```bash
+cp -r agent/files/src/* ./src/
+```
 
-Replace these manually or use the ACP package install system (which will prompt for values).
+Install dependencies:
 
-## What Each Template Provides
+```bash
+npm install zod
+npm install --save-dev typescript jest ts-jest @types/jest esbuild
+```
 
-### Configuration Templates
+## Customization Guide
 
-- **package.json.template** - npm package configuration with 6 subpath exports for optimal tree-shaking
-- **tsconfig.json** - TypeScript configuration for ESM modules, strict mode, and declaration generation
-- **jest.config.js** - Jest configuration for ESM + TypeScript with colocated tests
-- **esbuild.build.js** - esbuild configuration for bundling multiple entry points
-- **esbuild.watch.js** - esbuild watch mode for development
-- **gitignore.template** - Git ignore rules for Node.js projects
-- **npmignore.template** - npm ignore rules to exclude dev files from published package
+### Adapting to Your Domain
 
-### Source Code Templates
+The `src/types/shared.types.ts` and `src/services/user.service.ts` files use a `User` domain as an example. To adapt to your domain:
 
-- **schemas/example.schema.ts** - Zod schema pattern with TypeScript type inference
-- **services/example.service.ts** - Service layer pattern for Firestore operations
-- **dto/example.dto.ts** - DTO type definitions for API responses
-- **dto/transformers.ts** - Functions to transform internal types to API responses
-- **dto/index.ts** - Centralized DTO exports
-- **constant/collections.ts** - Helper functions for Firestore collection paths
-- **errors/task-errors.ts** - Custom error classes with HTTP status codes
-- **errors/index.ts** - Error exports and utilities
-- **client.ts** - Client wrapper pattern for multi-tenant access
+1. **Rename types**: Replace `User`, `UserId`, `UserDTO`, `UserRepository` with your domain entity
+2. **Update `CreateUserInput`**: Add the fields your entity needs
+3. **Update `UserService`**: Add your business logic methods, keep the `Result<T, E>` pattern
+4. **Implement `UserRepository`**: Write a concrete implementation for your database (Firestore, Postgres, etc.)
 
-## Patterns Demonstrated
+### Adding Error Kinds
 
-These templates demonstrate several key patterns:
+To add new error types:
 
-1. **Subpath Exports** - 6 exports for optimal tree-shaking
-2. **ESM Modules** - Modern JavaScript module system
-3. **TypeScript Strict Mode** - Maximum type safety
-4. **Colocated Tests** - Tests next to source files (`.spec.ts`)
-5. **Service Layer** - Business logic separated from data access
-6. **DTO Pattern** - Transform internal types to API-friendly responses
-7. **Error Handling** - Custom error classes with status codes
-8. **Client Wrapper** - Multi-tenant access pattern
+1. Add a `kind` to `ErrorKind` in `src/errors/base.error.ts`
+2. Add a class to `src/errors/app-errors.ts`
+3. Add it to `AppErrorUnion` and `HTTP_STATUS` in `src/errors/index.ts`
+4. Re-export from `src/errors/index.ts`
 
-## Next Steps
+## Related Patterns
 
-After installing templates:
+See the pattern documentation in `agent/patterns/` for detailed rationale and usage guidelines:
 
-1. **Customize package.json** - Update name, description, author
-2. **Install dependencies** - `npm install`
-3. **Customize source files** - Adapt to your domain
-4. **Run tests** - `npm test`
-5. **Build** - `npm run build`
-6. **Publish** - `npm publish --access public`
-
-## Learn More
-
-See the patterns and designs in the `agent/` directory for detailed documentation on:
-- Core library extraction patterns
-- NPM package structure
-- Testing strategies
-- Build configuration
-- Migration patterns
+- [Result Types](../patterns/core-sdk.types-result.md)
+- [Error Types](../patterns/core-sdk.types-error.md)
+- [Service Base](../patterns/core-sdk.service-base.md)
+- [Config Schema](../patterns/core-sdk.config-schema.md)
+- [Shared Types](../patterns/core-sdk.types-shared.md)
+- [Generic Utility Types](../patterns/core-sdk.types-generic.md)

@@ -5,6 +5,27 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.0] - 2026-02-27
+
+### Added
+- Shared Core Library implementation files (Task 7 of Milestone 2)
+  - Replaced Firebase-specific `agent/files/src/` with generic core-sdk example files
+  - `src/types/result.types.ts` — `Result<T,E>`, `ok`, `err`, `isOk`, `isErr`, combinators
+  - `src/types/utils.types.ts` — `DeepPartial`, `Nullable`, `Maybe`, `Immutable`, `RequireFields`
+  - `src/types/shared.types.ts` — Branded types (`UserId`, `EmailAddress`), `User` entity, `UserDTO`, `PaginatedResult`
+  - `src/errors/base.error.ts` — `AppError` abstract base class with `ErrorKind` discriminant
+  - `src/errors/app-errors.ts` — All 8 typed error subclasses (`ValidationError`, `NotFoundError`, etc.)
+  - `src/errors/index.ts` — Barrel re-export with `AppErrorUnion`, `HTTP_STATUS`, `isAppError()`
+  - `src/config/schema.ts` — Zod config schemas, inferred types, layer-scoped slices, `createTestConfig()`
+  - `src/config/loader.ts` — `loadConfig()` with env var merging and Zod validation
+  - `src/services/base.service.ts` — `BaseService<TConfig>` with lifecycle hooks
+  - `src/services/user.service.ts` — `UserService` example using `Result<T,E>` and typed errors
+  - Updated `agent/files/README.md` with new structure and customization guide
+  - Updated `package.yaml` templates section to reference all new files
+
+### Removed
+- Firebase/Firestore-specific example files (replaced by generic core-sdk examples)
+
 ## [1.6.0] - 2026-02-27
 
 ### Added

@@ -1,6 +1,6 @@
 # package.yaml
 name: core-sdk
-version: 1.6.0
+version: 1.7.0
 description: Patterns and templates for creating reusable core libraries that can be shared across MCP servers, REST APIs, and client applications
 author: Patrick Michaelsen
 license: MIT
@@ -124,8 +124,9 @@ contents:
       description: Patterns and templates for creating reusable core libraries that can be shared across MCP servers, REST APIs, and client applications
   
   # Template source files for core library projects
+  # These files are installed into consumer projects via `acp.package-install`
   templates:
-    # Configuration templates
+    # Configuration files (required for project setup)
     - name: config/package.json.template
       description: npm package configuration with subpath exports
       target: ./
@@ -134,86 +135,104 @@ contents:
         - PACKAGE_NAME
         - PACKAGE_DESCRIPTION
         - AUTHOR_NAME
-    
+
     - name: config/tsconfig.json
-      description: TypeScript configuration for ESM modules
+      description: TypeScript configuration for ESM modules, strict mode, declarations
       target: ./
       required: true
-    
+
     - name: config/jest.config.js
-      description: Jest configuration for ESM + TypeScript
+      description: Jest configuration for ESM + TypeScript with colocated .spec.ts files
       target: ./
       required: true
-    
+
     - name: config/esbuild.build.js
       description: esbuild build configuration for multiple entry points
       target: ./
       required: true
-    
+
     - name: config/esbuild.watch.js
       description: esbuild watch mode for development
       target: ./
       required: true
-    
+
     - name: config/gitignore.template
       description: Git ignore rules for Node.js projects
       target: ./.gitignore
       required: true
-    
+
     - name: config/npmignore.template
-      description: npm ignore rules to exclude dev files
+      description: npm ignore rules to exclude dev files from published package
       target: ./.npmignore
       required: true
-    
-    # Source code templates
-    - name: src/schemas/example.schema.ts
-      description: Example Zod schema with TypeScript type inference
-      target: src/schemas/
+
+    # Type system (core shared types)
+    - name: src/types/result.types.ts
+      description: Result<T,E> discriminated union with ok/err constructors and combinators
+      target: src/types/
       required: false
-    
-    - name: src/services/example.service.ts
-      description: Example service layer for Firestore operations
+
+    - name: src/types/utils.types.ts
+      description: Generic utility types — DeepPartial, Nullable, Maybe, Immutable, RequireFields
+      target: src/types/
+      required: false
+
+    - name: src/types/shared.types.ts
+      description: Branded domain types (UserId, EmailAddress), User entity, UserDTO, PaginatedResult
+      target: src/types/
+      required: false
+
+    - name: src/types/index.ts
+      description: Barrel re-export for all type utilities and domain types
+      target: src/types/
+      required: false
+
+    # Error hierarchy
+    - name: src/errors/base.error.ts
+      description: AppError abstract base class with ErrorKind discriminant and ErrorContext
+      target: src/errors/
+      required: false
+
+    - name: src/errors/app-errors.ts
+      description: Typed error subclasses for all 8 error kinds (validation, not_found, etc.)
+      target: src/errors/
+      required: false
+
+    - name: src/errors/index.ts
+      description: Barrel re-export with AppErrorUnion, HTTP_STATUS map, and isAppError guard
+      target: src/errors/
+      required: false
+
+    # Configuration
+    - name: src/config/schema.ts
+      description: Zod config schemas with inferred types, layer-scoped slices, and test helper
+      target: src/config/
+      required: false
+
+    - name: src/config/loader.ts
+      description: loadConfig — merges env vars over raw config and validates via Zod
+      target: src/config/
+      required: false
+
+    - name: src/config/index.ts
+      description: Barrel re-export for all config schemas, types, and helpers
+      target: src/config/
+      required: false
+
+    # Service layer
+    - name: src/services/base.service.ts
+      description: BaseService abstract class with config/logger injection and lifecycle hooks
       target: src/services/
       required: false
-    
-    - name: src/dto/example.dto.ts
-      description: Example DTO type definitions
-      target: src/dto/
+
+    - name: src/services/user.service.ts
+      description: UserService example using Result<T,E>, typed errors, and UserRepository interface
+      target: src/services/
       required: false
-    
-    - name: src/dto/transformers.ts
-      description: DTO transformer functions
-      target: src/dto/
-      required: false
-    
-    - name: src/dto/index.ts
-      description: Centralized DTO exports
-      target: src/dto/
-      required: false
-    
-    - name: src/constant/collections.ts
-      description: Firestore collection path helpers
-      target: src/constant/
-      required: false
-    
-    - name: src/errors/index.ts
-      description: Error exports and utilities
-      target: src/errors/
-      required: false
-    
-    - name: src/errors/task-errors.ts
-      description: Custom error classes with HTTP status codes
-      target: src/errors/
-      required: false
-    
-    - name: src/errors/task-errors.spec.ts
-      description: Error class tests
-      target: src/errors/
-      required: false
-    
-    - name: src/client.ts
-      description: Client wrapper for multi-tenant access
-      target: src/
+
+    - name: src/services/index.ts
+      description: Barrel re-export for all service classes and interfaces
+      target: src/services/
       required: false
 
 # Compatibility
