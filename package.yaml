@@ -1,6 +1,6 @@
 # package.yaml
 name: core-sdk
-version: 1.2.0
+version: 1.3.0
 description: Patterns and templates for creating reusable core libraries that can be shared across MCP servers, REST APIs, and client applications
 author: Patrick Michaelsen
 license: MIT
@@ -56,7 +56,27 @@ contents:
     - name: core-sdk.adapter-client.md
       description: Client adapter pattern for exposing services as a consumable library
       category: Adapter Layer
-  
+
+    - name: core-sdk.config-schema.md
+      description: Type-safe configuration schema pattern using Zod with validation and composition
+      category: Configuration
+
+    - name: core-sdk.config-environment.md
+      description: Environment variable mapping pattern with type coercion and naming conventions
+      category: Configuration
+
+    - name: core-sdk.config-loading.md
+      description: Layered configuration loading pattern with priority hierarchy and hot reload
+      category: Configuration
+
+    - name: core-sdk.config-secrets.md
+      description: Secret management pattern with Secret wrapper, vault integration, and rotation
+      category: Configuration
+
+    - name: core-sdk.config-multi-env.md
+      description: Multi-environment configuration pattern with inheritance for dev/staging/prod
+      category: Configuration
+
   commands: []
   
   designs:
