@@ -1,0 +1,39 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extract version from tag
+        id: version
+        run: echo "version=${GITHUB_REF_NAME#v}" >> $GITHUB_OUTPUT
+
+      - name: Extract changelog entry
+        id: changelog
+        run: |
+          version="${{ steps.version.outputs.version }}"
+          # Extract the section for this version from CHANGELOG.md
+          awk "/^## \[$version\]/,/^## \[/" CHANGELOG.md \
+            | head -n -1 \
+            | tail -n +2 \
+            > release_notes.txt
+          echo "Release notes extracted for v$version"
+          cat release_notes.txt
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "core-sdk v${{ steps.version.outputs.version }}"
+          body_path: release_notes.txt
+          draft: false
+          prerelease: false

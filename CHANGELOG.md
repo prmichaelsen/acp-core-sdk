@@ -5,6 +5,23 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.22.0] - 2026-02-27
+
+### Added
+- Publishing Infrastructure (Task 23, M4)
+  - `.github/workflows/validate.yml` — CI workflow running YAML validation and file existence checks on push/PR
+  - `.github/workflows/release.yml` — automated GitHub Release creation from CHANGELOG.md on `v*` tag push
+  - `CONTRIBUTING.md` — versioning rules, release process, code style guide, pattern contribution guide
+- Community Infrastructure (Task 25, M4)
+  - `.github/ISSUE_TEMPLATE/bug_report.md` — structured bug report with file-type checkboxes
+  - `.github/ISSUE_TEMPLATE/feature_request.md` — feature request with category checkboxes
+  - `.github/PULL_REQUEST_TEMPLATE.md` — PR checklist (validate, CHANGELOG, package.yaml, links)
+  - `SECURITY.md` — vulnerability disclosure policy with 7-day response SLA
+
+### Milestone
+- **M4 Package Publishing: COMPLETE** (7/7 tasks)
+- **All milestones complete — core-sdk v1.22.0 is the initial public release**
+
 ## [1.21.0] - 2026-02-27
 
 ### Added

@@ -1,0 +1,52 @@
+name: Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    name: Validate package.yaml
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Make scripts executable
+        run: chmod +x ./agent/scripts/*.sh
+
+      - name: Validate package.yaml
+        run: ./agent/scripts/acp.yaml-validate.sh package.yaml
+
+      - name: Check all template files exist
+        run: |
+          missing=0
+          while IFS= read -r name; do
+            path="agent/files/$name"
+            if [ ! -f "$path" ]; then
+              echo "MISSING: $path"
+              missing=$((missing + 1))
+            fi
+          done < <(awk '/^  templates:/,/^  [a-z]/' package.yaml | awk '/^    - name: /{print $NF}')
+          if [ "$missing" -gt 0 ]; then
+            echo "Error: $missing template file(s) missing from agent/files/"
+            exit 1
+          fi
+          echo "All template files present"
+
+      - name: Check all pattern files exist
+        run: |
+          missing=0
+          while IFS= read -r name; do
+            path="agent/patterns/$name"
+            if [ ! -f "$path" ]; then
+              echo "MISSING: $path"
+              missing=$((missing + 1))
+            fi
+          done < <(awk '/^  patterns:/,/^  commands:/' package.yaml | awk '/^    - name: /{print $NF}')
+          if [ "$missing" -gt 0 ]; then
+            echo "Error: $missing pattern file(s) missing from agent/patterns/"
+            exit 1
+          fi
+          echo "All pattern files present"
