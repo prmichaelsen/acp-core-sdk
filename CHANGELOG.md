@@ -5,6 +5,14 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.0] - 2026-02-27
+
+### Added
+- REST Server Example files (Task 8) in `agent/files/examples/rest/`
+  - `examples/rest/error-handler.ts` — centralized Express error handler using `isAppError()` + `HTTP_STATUS` map
+  - `examples/rest/user.routes.ts` — route handlers for `GET /:id`, `POST /`, `GET /` using `Result<T,E>`
+  - `examples/rest/server.ts` — Express app wiring `UserService` to routes with graceful shutdown and `InMemoryUserRepository` stub
+
 ## [1.7.1] - 2026-02-27
 
 ### Changed

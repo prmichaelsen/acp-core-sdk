@@ -36,11 +36,11 @@ milestones:
   - id: M2
     name: Example Implementations
     status: in_progress
-    progress: 14
+    progress: 29
     started: 2026-02-27
     completed: null
     estimated_weeks: 2-3
-    tasks_completed: 1
+    tasks_completed: 2
     tasks_total: 7
     notes: |
       Validates patterns by building working examples for all deployment targets.
@@ -239,16 +239,19 @@ tasks:
     
     - id: task-8
       name: REST Server Example
-      status: not_started
+      status: completed
       file: agent/tasks/milestone-2-example-implementations/task-8-rest-server-example.md
       estimated_hours: 8-10
-      actual_hours: null
-      completed_date: null
+      actual_hours: 0.25
+      completed_date: 2026-02-27
       notes: |
         Express REST server example in agent/files/examples/rest/
         Installed to ./examples/rest/ in consumer projects (not src/).
-        Files: server.ts, user.routes.ts, error-handler.ts
-        Imports shared core library from ../../src/
+
+        Completed: All 3 files created
+        - ✅ examples/rest/error-handler.ts (isAppError + HTTP_STATUS mapping)
+        - ✅ examples/rest/user.routes.ts (GET /:id, POST /, GET / with Result<T,E>)
+        - ✅ examples/rest/server.ts (Express app, InMemoryRepository, graceful shutdown)
 
     - id: task-9
       name: REST Client Library
@@ -468,6 +471,15 @@ progress:
 recent_work:
   - date: 2026-02-27
     description: |
+      Task 8 Complete: REST Server Example
+      3 files in agent/files/examples/rest/ — Express server wiring UserService to HTTP routes.
+    items:
+      - Created examples/rest/error-handler.ts (isAppError + HTTP_STATUS centralized handler)
+      - Created examples/rest/user.routes.ts (GET /:id, POST /, GET / using Result<T,E>)
+      - Created examples/rest/server.ts (Express app, InMemoryRepository stub, graceful shutdown)
+
+  - date: 2026-02-27
+    description: |
       Task 7 Complete: Shared Core Library (M2 started)
       Created 13 TypeScript files in agent/files/src/ implementing the core-sdk patterns.
       Replaces Firebase-specific placeholders with generic, installable examples.
@@ -607,9 +619,9 @@ recent_work:
       - 📋 Ready to add content with entity creation commands
 
 next_steps:
-  - Continue Milestone 2: Task 8 (MCP Server Example)
-  - Build MCP adapter wrapping UserService using core-sdk.adapter-mcp.md pattern
-  - Continue with REST, CLI, and client adapter examples (Tasks 9-11)
+  - Continue Milestone 2: Task 9 (REST Client Library — src/client/)
+  - Build typed UserClient wrapping all REST endpoints from Task 8
+  - Then Task 10 (MCP Server Example), Task 11 (CLI Tool Example)
 
 notes:
   - This is an ACP package repository
