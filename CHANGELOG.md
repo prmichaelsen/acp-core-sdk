@@ -5,6 +5,30 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.13.0] - 2026-02-27 — Milestone 2 Complete
+
+### Added
+- Example Documentation (Task 13) — `agent/files/README.md` fully updated
+  - Directory structure expanded to include `src/client/` and `examples/`
+  - **REST Client section**: `createClient({ baseUrl })` aggregator usage, `Result<T,E>` return types
+  - **Examples section** for all three server adapters:
+    - REST: endpoint table, how to run `server.ts` + `client-usage.ts`
+    - MCP: tool table, how to run, Claude Desktop config entry
+    - CLI: command examples, exit code convention, shell-composability
+  - **Integration Tests section**: per-adapter test strategy, how to run
+  - Installation section updated with `examples/` copy step + full dependency list
+
+### Milestone 2 Complete
+
+All 7 tasks complete — working examples for all deployment targets:
+- Task 7: Shared core library (`src/types/`, `src/errors/`, `src/config/`, `src/services/`)
+- Task 8: REST server example (`examples/rest/`)
+- Task 9: REST client library (`src/client/`) with `createClient()` aggregator
+- Task 10: MCP server example (`examples/mcp/`)
+- Task 11: CLI tool example (`examples/cli/`)
+- Task 12: Integration tests (`examples/test/`)
+- Task 13: Documentation (`agent/files/README.md`)
+
 ## [1.12.0] - 2026-02-27
 
 ### Added

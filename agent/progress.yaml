@@ -7,7 +7,7 @@ project:
   type: package
   started: 2026-02-26
   status: in_progress
-  current_milestone: M1
+  current_milestone: M3
   description: |
     ACP Package: Patterns and templates for creating reusable core libraries that can be shared across MCP servers, REST APIs, and client applications
 
@@ -35,12 +35,12 @@ milestones:
   
   - id: M2
     name: Example Implementations
-    status: in_progress
-    progress: 86
+    status: completed
+    progress: 100
     started: 2026-02-27
-    completed: null
+    completed: 2026-02-27
     estimated_weeks: 2-3
-    tasks_completed: 6
+    tasks_completed: 7
     tasks_total: 7
     notes: |
       Validates patterns by building working examples for all deployment targets.
@@ -322,13 +322,24 @@ tasks:
     
     - id: task-13
       name: Example Documentation
-      status: not_started
+      status: completed
       file: agent/tasks/milestone-2-example-implementations/task-13-example-documentation.md
       estimated_hours: 6-10
-      actual_hours: null
-      completed_date: null
+      actual_hours: 0.25
+      completed_date: 2026-02-27
       notes: |
-        Document all examples with setup and usage guides
+        Documentation for all examples and M2 completion.
+
+        Completed:
+        - ✅ agent/files/README.md — updated with full Examples section
+          - Directory tree updated (added src/client/ and examples/)
+          - REST Client section: createClient aggregator, usage snippet
+          - Examples section: REST, MCP, CLI with "how to run" snippets + endpoint tables
+          - Integration Tests section: strategy per adapter, how to run
+          - Installation section: updated with examples/ copy + all dependencies
+        - ✅ package.yaml — v1.13.0, all examples/ templates already present
+        - ✅ agent/progress.yaml — M2 marked completed (100%, 7/7 tasks)
+        - ✅ CHANGELOG.md — v1.13.0 entry + M2 complete marker
   
   milestone_3:
     - id: task-14
