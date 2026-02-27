@@ -5,6 +5,17 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.10.0] - 2026-02-27
+
+### Added
+- MCP Server Example (Task 10) in `agent/files/examples/mcp/`
+  - `examples/mcp/user.tools.ts` — `registerUserTools(server, service)` registering three MCP tools:
+    - `get_user` — calls `service.findUser(id)`, returns `UserDTO` JSON or `McpError(InvalidParams)`
+    - `create_user` — calls `service.createUser(input)`, returns `UserDTO` or `McpError` on validation/conflict
+    - `list_users` — calls `service.listUsers(opts)`, returns paginated `UserDTO[]` with cursor
+  - `examples/mcp/server.ts` — `McpServer` wiring `UserService` to tools, `StdioServerTransport`, graceful SIGTERM/SIGINT shutdown; logs to stderr (not stdout) to avoid corrupting MCP protocol
+- `AppError` kinds mapped to `McpError` codes via `MCP_CODE_MAP`: validation/not_found → `InvalidParams`, auth errors → `InvalidRequest`, system errors → `InternalError`
+
 ## [1.9.0] - 2026-02-27
 
 ### Added
