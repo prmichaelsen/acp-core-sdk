@@ -5,6 +5,19 @@ All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.9.0] - 2026-02-27
+
+### Added
+- REST Client Library (Task 9) in `agent/files/src/client/`
+  - `src/client/user.client.ts` — `createUserClient(baseUrl, init?)` factory returning typed methods:
+    - `getUser(id)` → `Promise<Result<UserDTO, NotFoundError | ValidationError>>`
+    - `createUser(input)` → `Promise<Result<UserDTO, ValidationError | ConflictError>>`
+    - `listUsers(opts?)` → `Promise<PaginatedResult<UserDTO>>`
+  - `src/client/index.ts` — top-level `createClient({ baseUrl, init? })` aggregator + barrel re-export
+  - `examples/rest/client-usage.ts` — runnable round-trip demo (create, fetch, list, error branches)
+- `createClient({ baseUrl })` returns a namespaced `Client` object — `client.users.getUser(id)` — single init point for auth headers and base URL; consumers extend `Client` with additional service namespaces as their domain grows
+- HTTP 4xx responses mapped back to typed `AppError` subclasses using the same `ErrorKind` discriminant as the server; uses native `fetch` (no extra dependencies, Node 18+)
+
 ## [1.8.0] - 2026-02-27
 
 ### Added

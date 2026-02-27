@@ -36,11 +36,11 @@ milestones:
   - id: M2
     name: Example Implementations
     status: in_progress
-    progress: 29
+    progress: 43
     started: 2026-02-27
     completed: null
     estimated_weeks: 2-3
-    tasks_completed: 2
+    tasks_completed: 3
     tasks_total: 7
     notes: |
       Validates patterns by building working examples for all deployment targets.
@@ -255,16 +255,19 @@ tasks:
 
     - id: task-9
       name: REST Client Library
-      status: not_started
+      status: completed
       file: agent/tasks/milestone-2-example-implementations/task-9-rest-client-library.md
       estimated_hours: 6-8
-      actual_hours: null
-      completed_date: null
+      actual_hours: 0.25
+      completed_date: 2026-02-27
       notes: |
         Typed REST client in agent/files/src/client/ (installable, not just example).
         Wraps all REST endpoints defined in task-8 as typed functions.
-        Files: src/client/user.client.ts, src/client/index.ts
-        Also adds examples/rest/client-usage.ts showing the client in action.
+
+        Completed: All 3 files created
+        - ✅ src/client/user.client.ts (createUserClient factory, Result<T,E>, HTTP error mapping)
+        - ✅ src/client/index.ts (barrel re-export)
+        - ✅ examples/rest/client-usage.ts (runnable round-trip demo)
 
     - id: task-10
       name: MCP Server Example
@@ -471,6 +474,15 @@ progress:
 recent_work:
   - date: 2026-02-27
     description: |
+      Task 9 Complete: REST Client Library
+      3 files — typed HTTP client wrapping all user endpoints as Result<T,E> functions.
+    items:
+      - Created src/client/user.client.ts (createUserClient factory, maps 4xx to typed AppErrors)
+      - Created src/client/index.ts (barrel re-export)
+      - Created examples/rest/client-usage.ts (full round-trip demo: create, fetch, list, error branches)
+
+  - date: 2026-02-27
+    description: |
       Task 8 Complete: REST Server Example
       3 files in agent/files/examples/rest/ — Express server wiring UserService to HTTP routes.
     items:
@@ -619,9 +631,9 @@ recent_work:
       - 📋 Ready to add content with entity creation commands
 
 next_steps:
-  - Continue Milestone 2: Task 9 (REST Client Library — src/client/)
-  - Build typed UserClient wrapping all REST endpoints from Task 8
-  - Then Task 10 (MCP Server Example), Task 11 (CLI Tool Example)
+  - Continue Milestone 2: Task 10 (MCP Server Example — examples/mcp/)
+  - Then Task 11 (CLI Tool Example — examples/cli/)
+  - Then Task 12 (Integration Testing) and Task 13 (Documentation)
 
 notes:
   - This is an ACP package repository
