@@ -1,6 +1,5 @@
 # Exclude source files (only dist/ should be published)
 src/
-__tests__/
 
 # Exclude test files
 *.spec.ts

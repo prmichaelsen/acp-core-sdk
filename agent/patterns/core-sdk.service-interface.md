@@ -507,8 +507,8 @@ class OrderService {
 ### Mock Implementation for Testing
 
 ```typescript
-// tests/mocks/MockUserService.ts
-import { IUserService, User, CreateUserData, UpdateUserData } from '../../src/core/interfaces/IUserService';
+// src/services/user.service.mock.ts
+import { IUserService, User, CreateUserData, UpdateUserData } from '../core/interfaces/IUserService';
 
 export class MockUserService implements IUserService {
   private users: Map<string, User> = new Map();
@@ -569,9 +569,9 @@ export class MockUserService implements IUserService {
 ### Unit Test Using Mock
 
 ```typescript
-// tests/unit/services/OrderService.test.ts
-import { OrderService } from '../../../src/core/services/OrderService';
-import { MockUserService } from '../../mocks/MockUserService';
+// src/services/order.service.spec.ts
+import { OrderService } from './order.service';
+import { MockUserService } from './user.service.mock';
 
 describe('OrderService', () => {
   let orderService: OrderService;

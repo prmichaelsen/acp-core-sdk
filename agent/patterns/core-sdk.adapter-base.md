@@ -559,7 +559,7 @@ await adapter.cleanup();
 ## Testing
 
 ```typescript
-// tests/unit/adapters/BaseAdapter.test.ts
+// src/adapters/base.adapter.spec.ts
 describe('BaseAdapter', () => {
   let adapter: TestAdapter;
   let container: ServiceContainer;

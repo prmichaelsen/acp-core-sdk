@@ -368,7 +368,7 @@ const service = container.resolve<ExampleService>('exampleService');
 
 ### Unit Tests (Core Layer)
 ```typescript
-// tests/unit/services/ExampleService.test.ts
+// src/services/example.service.spec.ts
 describe('ExampleService', () => {
   let service: ExampleService;
   
@@ -391,7 +391,7 @@ describe('ExampleService', () => {
 
 ### Integration Tests (Adapter Layer)
 ```typescript
-// tests/integration/adapters/mcp.test.ts
+// src/adapters/mcp.adapter.integration.spec.ts
 describe('MCP Adapter', () => {
   let adapter: MCPAdapter;
   let client: Client;

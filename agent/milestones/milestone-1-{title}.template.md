@@ -100,8 +100,7 @@ my-project/
 │   │   └── index.ts
 │   └── utils/
 │       └── logger.ts
-└── tests/
-    └── setup.test.ts
+└── setup.spec.ts
 ```
 
 ---

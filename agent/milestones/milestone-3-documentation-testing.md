@@ -120,9 +120,9 @@ tests/
 │   ├── mockConfigs.ts
 │   └── testScenarios.ts
 └── integration/                         # Integration tests
-    ├── pattern-validation.test.ts
-    ├── example-validation.test.ts
-    └── cross-target.test.ts
+    ├── pattern-validation.integration.spec.ts
+    ├── example-validation.integration.spec.ts
+    └── cross-target.integration.spec.ts
 
 templates/                               # Starter templates
 ├── mcp-server-template/

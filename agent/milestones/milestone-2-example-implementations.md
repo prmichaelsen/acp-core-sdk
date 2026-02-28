@@ -92,14 +92,12 @@ examples/
 │   ├── src/
 │   │   ├── index.ts
 │   │   ├── services/
-│   │   │   └── DataService.ts
+│   │   │   ├── DataService.ts
+│   │   │   └── DataService.spec.ts
 │   │   ├── models/
 │   │   │   └── Data.ts
 │   │   └── config/
 │   │       └── ConfigManager.ts
-│   ├── tests/
-│   │   └── services/
-│   │       └── DataService.test.ts
 │   └── README.md
 │
 ├── mcp-server/                     # MCP server example
@@ -110,11 +108,9 @@ examples/
 │   │   ├── server.ts
 │   │   ├── adapters/
 │   │   │   └── MCPAdapter.ts
-│   │   └── handlers/
-│   │       └── toolHandlers.ts
-│   ├── tests/
-│   │   └── integration/
-│   │       └── mcp.test.ts
+│   │   ├── handlers/
+│   │   │   └── toolHandlers.ts
+│   │   └── mcp.adapter.integration.spec.ts
 │   └── README.md
 │
 ├── rest-api/                       # REST API example
@@ -127,11 +123,9 @@ examples/
 │   │   │   └── RESTAdapter.ts
 │   │   ├── routes/
 │   │   │   └── dataRoutes.ts
-│   │   └── middleware/
-│   │       └── errorHandler.ts
-│   ├── tests/
-│   │   └── integration/
-│   │       └── api.test.ts
+│   │   ├── middleware/
+│   │   │   └── errorHandler.ts
+│   │   └── api.integration.spec.ts
 │   ├── openapi.yaml
 │   └── README.md
 │
@@ -143,11 +137,9 @@ examples/
 │   │   ├── cli.ts
 │   │   ├── adapters/
 │   │   │   └── CLIAdapter.ts
-│   │   └── commands/
-│   │       └── processCommand.ts
-│   ├── tests/
-│   │   └── integration/
-│   │       └── cli.test.ts
+│   │   ├── commands/
+│   │   │   └── processCommand.ts
+│   │   └── cli.integration.spec.ts
 │   └── README.md
 │
 └── client-library/                 # Client library example
@@ -156,11 +148,9 @@ examples/
     ├── src/
     │   ├── index.ts
     │   ├── client.ts
+    │   ├── client.spec.ts
     │   └── adapters/
     │       └── ClientAdapter.ts
-    ├── tests/
-    │   └── unit/
-    │       └── client.test.ts
     └── README.md
 ```
 

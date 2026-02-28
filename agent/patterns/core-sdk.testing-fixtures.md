@@ -36,7 +36,7 @@ src/
 │   ├── rest.adapter.ts
 │   ├── rest.adapter.spec.ts
 │   └── rest.fixtures.ts         ← fixtures for adapter tests
-└── test/
+└── shared/
     └── shared.fixtures.ts       ← cross-cutting fixtures
 ```
 
@@ -225,7 +225,7 @@ export function createMultiLineOrderFixture(): Order {
 ### Shared Test Fixtures
 
 ```typescript
-// src/test/shared.fixtures.ts
+// src/shared/shared.fixtures.ts
 // Cross-cutting fixtures used by many test files
 
 export const TEST_DATE = new Date('2026-01-01T00:00:00Z');

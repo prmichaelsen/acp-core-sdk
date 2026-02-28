@@ -457,8 +457,8 @@ async someMethod(): Promise<void> {
 ### Unit Test Example
 
 ```typescript
-// tests/unit/services/BaseService.test.ts
-import { BaseService, ServiceState } from '../../../src/core/services/BaseService';
+// src/services/base.service.spec.ts
+import { BaseService, ServiceState } from './base.service';
 
 class TestService extends BaseService {
   initializeCalled = false;

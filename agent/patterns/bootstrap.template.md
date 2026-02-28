@@ -1140,20 +1140,11 @@ While not covered in detail, consider:
 src/
 ├── tools/
 │   ├── tool-one.ts
-│   ├── tool-one.test.ts         # Co-located tests
+│   ├── tool-one.spec.ts         # Co-located tests
 │   └── ...
 ```
 
-Or separate test directory:
-
-```
-tests/
-├── tools/
-│   ├── tool-one.test.ts
-│   └── ...
-└── integration/
-    └── ...
-```
+Tests are always colocated with source — no separate `tests/` directory.
 
 ## Common Patterns Summary
 

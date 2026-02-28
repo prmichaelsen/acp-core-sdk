@@ -524,7 +524,7 @@ app.get('/users', async (req, res) => {
 ## Testing
 
 ```typescript
-// tests/unit/container/ServiceContainer.test.ts
+// src/container/service-container.spec.ts
 describe('ServiceContainer', () => {
   let container: ServiceContainer;
 
