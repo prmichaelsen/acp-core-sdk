@@ -77,6 +77,13 @@ Or using the installation script:
 - **[core-sdk.types-error.md](agent/patterns/core-sdk.types-error.md)** - Error type hierarchy pattern with discriminated unions and HTTP/MCP status mapping
 - **[core-sdk.types-result.md](agent/patterns/core-sdk.types-result.md)** - Result type pattern for typed functional error handling without exceptions
 
+#### Client SDK
+- **[core-sdk.client-http-transport.md](agent/patterns/core-sdk.client-http-transport.md)** - Shared fetch-based HTTP transport with auth, error normalization, and SdkResponse output
+- **[core-sdk.client-response.md](agent/patterns/core-sdk.client-response.md)** - Supabase-style { data, error } response type with throwOnError escape hatch
+- **[core-sdk.client-svc.md](agent/patterns/core-sdk.client-svc.md)** - 1:1 REST mirror service client with resource-grouped typed methods
+- **[core-sdk.client-app.md](agent/patterns/core-sdk.client-app.md)** - Use-case-oriented app client with compound operations for web applications
+- **[core-sdk.client-type-generation.md](agent/patterns/core-sdk.client-type-generation.md)** - OpenAPI to TypeScript type generation with hand-written client code
+
 ### Designs
 
 - **[core-sdk.architecture.md](agent/design/core-sdk.architecture.md)** - Patterns and templates for creating reusable core libraries that can be shared across MCP servers, REST APIs, and client applications
@@ -88,7 +95,7 @@ Or using the installation script:
 - **Production-ready from day one** — typed errors, `Result<T,E>`, Zod config validation, and structured logging are baked in from the start
 - **Testable by design** — `MockUserRepository`, stable fixtures, and `ToolCapture` make unit and integration tests straightforward
 - **Copy, don't configure** — install source files directly into your project and adapt them; no framework lock-in
-- **Consistent patterns** — 25 patterns across service, adapter, config, testing, and type-system categories ensure every project follows the same conventions
+- **Consistent patterns** — 30 patterns across service, adapter, config, testing, type-system, and client SDK categories ensure every project follows the same conventions
 
 ## Usage
 

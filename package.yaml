@@ -117,6 +117,26 @@ contents:
       description: Result type pattern for typed functional error handling without exceptions
       category: Type System
 
+    - name: core-sdk.client-http-transport.md
+      description: Shared fetch-based HTTP transport with auth, error normalization, and SdkResponse output
+      category: Client SDK
+
+    - name: core-sdk.client-response.md
+      description: Supabase-style { data, error } response type with throwOnError escape hatch
+      category: Client SDK
+
+    - name: core-sdk.client-svc.md
+      description: 1:1 REST mirror service client with resource-grouped typed methods
+      category: Client SDK
+
+    - name: core-sdk.client-app.md
+      description: Use-case-oriented app client with compound operations for web applications
+      category: Client SDK
+
+    - name: core-sdk.client-type-generation.md
+      description: OpenAPI to TypeScript type generation with hand-written client code
+      category: Client SDK
+
   commands: []
   
   designs:

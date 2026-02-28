@@ -599,7 +599,7 @@ tasks:
 documentation:
   design_documents: 1
   milestone_documents: 4
-  pattern_documents: 25
+  pattern_documents: 30
   task_documents: 27
   command_documents: 0
   last_updated: 2026-02-27
