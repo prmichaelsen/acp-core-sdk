@@ -125,7 +125,7 @@ contents:
   
   # Template source files for core library projects
   # These files are installed into consumer projects via `acp.package-install`
-  templates:
+  files:
     # Configuration files (required for project setup)
     - name: config/package.json.template
       description: npm package configuration with subpath exports
